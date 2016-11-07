@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Andy&#39;s blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://songbinbin.me/"/>
+  <updated>2016-11-07T09:43:53.045Z</updated>
+  <id>http://songbinbin.me/</id>
+  
+  <author>
+    <name>Andy Song</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wuliQQ</title>
+    <link href="http://songbinbin.me/2016/11/02/wuliQQ/"/>
+    <id>http://songbinbin.me/2016/11/02/wuliQQ/</id>
+    <published>2016-11-02T01:34:05.000Z</published>
+    <updated>2016-11-07T09:43:53.045Z</updated>
+    
+    <content type="html">&lt;p&gt;想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/hLIGaPoyIyk&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="http://songbinbin.me/categories/Life/"/>
+    
+    
+      <category term="QQ" scheme="http://songbinbin.me/tags/QQ/"/>
+    
+      <category term="video" scheme="http://songbinbin.me/tags/video/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop实验--WordCount</title>
+    <link href="http://songbinbin.me/2016/10/24/Hadoop-WordCount/"/>
+    <id>http://songbinbin.me/2016/10/24/Hadoop-WordCount/</id>
+    <published>2016-10-24T13:59:37.000Z</published>
+    <updated>2016-11-07T09:42:54.037Z</updated>
+    
+    <content type="html">&lt;p&gt;今天给大家带来Hadoop下的第一个Hello World程序。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;1-选用文本&quot;&gt;&lt;a href=&quot;#1-选用文本&quot; class=&quot;headerlink&quot; title=&quot;1. 选用文本&quot;&gt;&lt;/a&gt;1. 选用文本&lt;/h1&gt;&lt;p&gt;实验所选用的数据选用的是《冰与火之歌》(A Song of Ice and Fire)的英文txt文件，从下面这个网站中下载：&lt;a href=&quot;http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html&lt;/a&gt;&lt;br&gt;一共有五个txt文件，分别是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;001ssb.txt (A Game of Thrones，权力的游戏，1.6M)&lt;/li&gt;
+&lt;li&gt;002ssb.txt (A Clash of Kings，列王的纷争，1.8M)&lt;/li&gt;
+&lt;li&gt;003ssb.txt (A Storm of Swords，冰与的风暴，2.4M)&lt;/li&gt;
+&lt;li&gt;004ssb.txt (A Feast for Crows，群鸦的盛宴，1.7M)&lt;/li&gt;
+&lt;li&gt;005ssb.txt (A Dance with Dragons，魔龙的狂舞，2.4M)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;2-创建HDFS文件目录&quot;&gt;&lt;a href=&quot;#2-创建HDFS文件目录&quot; class=&quot;headerlink&quot; title=&quot;2. 创建HDFS文件目录&quot;&gt;&lt;/a&gt;2. 创建HDFS文件目录&lt;/h1&gt;&lt;p&gt;格式化文件系统并启动，因为伪分布式读取的是HDFS上的数据，要执行MapReduce任务，我们需要创建HDFS文件系统。使用HDFS文件操作命令：&lt;code&gt;hdfs dfs -mkdir －p /user/tyrion&lt;/code&gt;，其中，&lt;code&gt;tyrion&lt;/code&gt;是你当前Ubuntu的用户名。该命令的行为与UNIX下&lt;code&gt;mkdir -p&lt;/code&gt;相似，这一路径上的父目录如果不存在，则创建该父目录。如果按如上命令，那么现在就默认在HDFS文件系统中的&lt;code&gt;/user/tyrion&lt;/code&gt;目录下。接下来创建&lt;code&gt;input&lt;/code&gt;文件夹用于存放输入数据，使用put命令将之前的txt文件拷入input文件夹中。类似，ls命令可以查看文件列表。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hdfs dfs -mkdir input&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hdfs dfs -put /path_to_txt_file/*.txt input&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hdfs dfs -ls input&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在浏览器中输入&lt;code&gt;localhost:50070&lt;/code&gt;可以查看集群基本信息，包括文件信息。&lt;br&gt;&lt;img src=&quot;/img/hadoop/file_list.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;3-使用IntelliJ编写Hadoop程序&quot;&gt;&lt;a href=&quot;#3-使用IntelliJ编写Hadoop程序&quot; class=&quot;headerlink&quot; title=&quot;3. 使用IntelliJ编写Hadoop程序&quot;&gt;&lt;/a&gt;3. 使用IntelliJ编写Hadoop程序&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;新建一个Project，一路默认。&lt;/li&gt;
+&lt;li&gt;添加依赖，依次打开&lt;code&gt;File - Project Structure - Modules - (右侧)+ - Library Type - Java&lt;/code&gt;。选择hadoop目录下&lt;code&gt;share/hadoop&lt;/code&gt;中的文件夹，本次实验WordCount只用到common和mapreduce文件夹，所以只添加这两个就行了。&lt;/li&gt;
+&lt;li&gt;在src下新建一个WordCount类，代码可参考官网Documentation中的Tutorial，在此不做赘述。&lt;/li&gt;
+&lt;li&gt;导出jar包。依次选择&lt;code&gt;File - Project Structure - Artifacts - + - JAR - From modules with dependencies...&lt;/code&gt;，选择要Main Class，确定。接下来选择菜单&lt;code&gt;Build - Build Artifacts - Build&lt;/code&gt;即可，生成的jar文件位于工程项目目录的&lt;code&gt;out/artifacts&lt;/code&gt;下。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;4-运行Hadoop程序&quot;&gt;&lt;a href=&quot;#4-运行Hadoop程序&quot; class=&quot;headerlink&quot; title=&quot;4. 运行Hadoop程序&quot;&gt;&lt;/a&gt;4. 运行Hadoop程序&lt;/h1&gt;&lt;p&gt;可以在hadoop下创建一个exercise文件夹，将刚才生成的jar包拷到其中，按如下命令运行:&lt;br&gt;&lt;code&gt;hadoop jar ./exercise/wc.jar input output&lt;/code&gt;&lt;br&gt;使用命令&lt;code&gt;hdfs dfs -cat output/*&lt;/code&gt;可以查看运行结果。&lt;br&gt;通过命令&lt;code&gt;hdfs dfs -get output ./test_out&lt;/code&gt;可以将结果取回本地。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;运行Hadoop程序时，为了防止覆盖结果，程序指定的输出目录（如output）不能存在，否则会提示错误。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也可以使用Intellij结合Maven本地运行和调试MapReduce程序，该方法最大的特点是不需要安装任何模式的Hadoop，只要在Maven配置文件中指定Hadoop依赖包名字和版本号，Maven就能自动搞定这些依赖。不过刚开始我还是偏向用IntelliJ以及命令行来，以后再来详细研究。&lt;/p&gt;
+&lt;h1 id=&quot;5-在Web界面查看作业运行状态&quot;&gt;&lt;a href=&quot;#5-在Web界面查看作业运行状态&quot; class=&quot;headerlink&quot; title=&quot;5. 在Web界面查看作业运行状态&quot;&gt;&lt;/a&gt;5. 在Web界面查看作业运行状态&lt;/h1&gt;&lt;p&gt;要在Web端查看作业的执行情况，需要启动YARN，让YARN来负责资源管理与任务调度。新版Hadoop使用了新的MapReduce框架(YARN，Yet Another Resource Negotiator)。YARN是从MapReduce中分离出来，负责资源管理与任务调度。YARN运行于MapReduce之上，提供了高可用性、高扩展性。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先修改配置文件mapred-site.xml，原始只有.template文件，这边需要先进行重命名：&lt;br&gt;&lt;code&gt;mv ./etc/hadoop/mapred-site.xml.template ./etc/hadoop/mapred-site.xml&lt;/code&gt;&lt;blockquote&gt;
+&lt;p&gt;不启动YARN时需改回.template后缀，否则在该配置文件存在，而未开启YARN的情况下会一直尝试连接。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改mapred-site.xml以及yarn-site.xm文件。&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;mapreduce.framework.name&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;yarn&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;yarn.nodemanager.aux-services&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;mapreduce_shuffle&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动Hadoop &lt;code&gt;./sbin/start-dfs.sh&lt;/code&gt;&lt;br&gt;启动YARN &lt;code&gt;./sbin/start-yarn.sh&lt;/code&gt;&lt;br&gt;开启历史服务器，以便在Web中查看任务运行情况&lt;code&gt;./sbin/mr-jobhistory-daemon.sh start historyserver&lt;/code&gt;&lt;br&gt;开启后通过jps查看，可以看到多了NodeManager和ResourceManager两个后台进程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;浏览器打开&lt;code&gt;localhost:8088&lt;/code&gt;可以查看任务运行情况，跑一下WordCount程序。程序执行过程中可以实时查看运行进度，跑完后点击History可以查看作业详细信息。&lt;br&gt;&lt;img src=&quot;/img/hadoop/web_1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/hadoop/web_2.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;关闭脚本：&lt;br&gt;&lt;code&gt;./sbin/mr-jobhistory-daemon.sh stop historyserver&lt;/code&gt;&lt;br&gt;&lt;code&gt;./sbin/stop-yarn.sh&lt;/code&gt;&lt;br&gt;&lt;code&gt;./sbin/stop-dfs.sh&lt;/code&gt;&lt;blockquote&gt;
+&lt;p&gt;如果只启动YARN，那么只可以在Web查看任务运行状态，而不能查看历史信息。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天给大家带来Hadoop下的第一个Hello World程序。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Software" scheme="http://songbinbin.me/categories/Software/"/>
+    
+    
+      <category term="Hadoop" scheme="http://songbinbin.me/tags/Hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Ubuntu下布置Hadoop单机伪分布式</title>
+    <link href="http://songbinbin.me/2016/10/21/Hadoop-install/"/>
+    <id>http://songbinbin.me/2016/10/21/Hadoop-install/</id>
+    <published>2016-10-21T12:01:37.000Z</published>
+    <updated>2016-11-07T09:43:09.209Z</updated>
+    
+    <content type="html">&lt;p&gt;为了职业发展，开始试水大数据，今天带来一篇在Ubuntu14.04下布置Hadoop-2.7.1版本单机伪分布式的教程。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;1-安装和配置JDK&quot;&gt;&lt;a href=&quot;#1-安装和配置JDK&quot; class=&quot;headerlink&quot; title=&quot;1. 安装和配置JDK&quot;&gt;&lt;/a&gt;1. 安装和配置JDK&lt;/h1&gt;&lt;p&gt;在官网上下载JDK，解压并拷贝到&lt;code&gt;/usr/local&lt;/code&gt;下。接下来配置环境变量，打开&lt;code&gt;/etc/profile&lt;/code&gt;并添加&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;JAVA_HOME=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/jdk1.&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;_101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PATH=&lt;span class=&quot;variable&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin:&lt;span class=&quot;variable&quot;&gt;$PATH&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CLASSPATH=.:&lt;span class=&quot;variable&quot;&gt;$JAVA_HOME&lt;/span&gt;/lib/dt.jar:&lt;span class=&quot;variable&quot;&gt;$JAVA_HOME&lt;/span&gt;/lib/tools.jar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;export&lt;/span&gt; JAVA_HOME PATH CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;保存退出，一般执行&lt;code&gt;source /etc/profile&lt;/code&gt;可以使配置立即生效，有时也需要重新打开terminal或者重启。&lt;br&gt;执行&lt;code&gt;java -version&lt;/code&gt;和&lt;code&gt;$JAVA_HOME/bin/java -version&lt;/code&gt;查看是否都会打印版本信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/hadoop/java_version.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;2-下载安装Hadoop&quot;&gt;&lt;a href=&quot;#2-下载安装Hadoop&quot; class=&quot;headerlink&quot; title=&quot;2. 下载安装Hadoop&quot;&gt;&lt;/a&gt;2. 下载安装Hadoop&lt;/h1&gt;&lt;p&gt;从Apache Hadoop官网下载一个稳定的发布包，这里我们下载2.7.1版本，解压到本地文件系统中，推荐就放在用户主目录下。&lt;/p&gt;
+&lt;h1 id=&quot;3-配置SSH&quot;&gt;&lt;a href=&quot;#3-配置SSH&quot; class=&quot;headerlink&quot; title=&quot;3. 配置SSH&quot;&gt;&lt;/a&gt;3. 配置SSH&lt;/h1&gt;&lt;p&gt;为了保证在远程管理Hadoop节点以及Hadoop节点间用户共享访问时的安全性，Hadoop系统需要配置和使用SSH（安全外壳协议）。这里配置SSH的主要工作是创建一个认证文件，使得用户以public key方式登陆，而不用手工输密码。配置的基本步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生成密钥对，执行命令&lt;code&gt;ssh-keygen -t rsa&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一直按&lt;code&gt;Enter&lt;/code&gt;键，默认生成的密钥对保存在&lt;code&gt;.ssh/id_rsa&lt;/code&gt;文件中&lt;/li&gt;
+&lt;li&gt;进入&lt;code&gt;.ssh&lt;/code&gt;目录，执行命令&lt;code&gt;cp id_rsa.pub authorized_keys&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;执行命令&lt;code&gt;ssh localhost&lt;/code&gt;即可测试是否登陆。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;4-配置Hadoop环境&quot;&gt;&lt;a href=&quot;#4-配置Hadoop环境&quot; class=&quot;headerlink&quot; title=&quot;4. 配置Hadoop环境&quot;&gt;&lt;/a&gt;4. 配置Hadoop环境&lt;/h1&gt;&lt;p&gt;Hadoop-2.7.1版本需要配置三个文件，位于Hadoop下&lt;code&gt;etc/hadoop&lt;/code&gt;文件中，分别是Hadoop环境变量设置文件&lt;code&gt;hadoop-env.sh&lt;/code&gt;，全局配置文件&lt;code&gt;core-site.xml&lt;/code&gt;，HDFS配置文件&lt;code&gt;hdfs-site.xml&lt;/code&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;hadoop-env.sh&lt;/code&gt;配置文件，修改JAVA_HOME变量为jdk所在路径。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;export&lt;/span&gt; JAVA_HOME=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/jdk1.&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;_101&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;core-site.xml&lt;/code&gt;配置文件，在configuration中添加内容。其中，hadoop.tmp.dir的value为hadoop所在的路径。&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;hadoop.tmp.dir&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;file:/home/tyrion/hadoop-2.7.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;Abase for other temporary directories.&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;fs.defaultFS&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;hdfs://localhost:9000&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;hdfs-site.xml&lt;/code&gt;配置文件，同样在configuration中添加内容。namenode和datanode的路径同样改为自己Hadoop所在的路径下。&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;dfs.replication&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;dfs.namenode.name.dir&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;file:/home/tyrion/hadoop-2.7.1/tmp/dfs/name&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;dfs.datanode.data.dir&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;file:/home/tyrion/hadoop-2.7.1/tmp/dfs/data&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;伪分布式虽然只需要配置fs.defaultFS和dfs.replicaton就可以运行，不过若没有配置hadoop.tmp.dir参数，则默认使用的临时目录为/tmp/hadoop/username，而这个目录重启时可能被系统清理掉，导致必须重新执行format才行。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;5-Hadoop的运行&quot;&gt;&lt;a href=&quot;#5-Hadoop的运行&quot; class=&quot;headerlink&quot; title=&quot;5. Hadoop的运行&quot;&gt;&lt;/a&gt;5. Hadoop的运行&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;为方便在terminal中直接使用&lt;code&gt;hadoop&lt;/code&gt;命令，在自己用户主目录下的&lt;code&gt;.bashrc&lt;/code&gt;中添加环境变量。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;export&lt;/span&gt; PATH=/home/tyrion/hadoop-&lt;span class=&quot;number&quot;&gt;2.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;/bin:&lt;span class=&quot;variable&quot;&gt;$PATH&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 同样使用命令&lt;code&gt;source .bashrc&lt;/code&gt;使其立即生效，执行&lt;code&gt;hadoop version&lt;/code&gt;查看是否显示Hadoop版本信息。&lt;br&gt;&lt;img src=&quot;/img/hadoop/hadoop_version.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;在初次安装和使用Hadoop之前，需要格式化分布式文件系统HDFS，使用命令&lt;code&gt;hadoop namenode -format&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在Hadoop目录下执行命令&lt;code&gt;./sbin/start-dfs.sh&lt;/code&gt;启动Hadoop，启动之后使用&lt;code&gt;jps&lt;/code&gt;命令查看启动的进程。&lt;br&gt;&lt;img src=&quot;/img/hadoop/start_dfs.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行命令&lt;code&gt;./sbin/stop-dfs.sh&lt;/code&gt;停止Hadoop守护进程。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;格式化命令只能在初次安装时使用，如果再次使用的话，namenode之前保存的datanode的信息会丢失，导致DataNode这个节点不会启动。解决办法是修改datanode文件夹中current下的VERSION文件，将其中的clusterID修改为namenode中对应的clusterID。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;至此便大功告成啦，接下来我会实现一些简单的MapReduce基础算法程序，加油咯！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了职业发展，开始试水大数据，今天带来一篇在Ubuntu14.04下布置Hadoop-2.7.1版本单机伪分布式的教程。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Software" scheme="http://songbinbin.me/categories/Software/"/>
+    
+    
+      <category term="Hadoop" scheme="http://songbinbin.me/tags/Hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>305羽毛球排位赛</title>
+    <link href="http://songbinbin.me/2016/05/03/badminton/"/>
+    <id>http://songbinbin.me/2016/05/03/badminton/</id>
+    <published>2016-05-03T00:35:38.000Z</published>
+    <updated>2016-11-07T09:44:11.209Z</updated>
+    
+    <content type="html">&lt;p&gt;恭喜QQ糖再次战胜abl，后者继续巩固其实验室倒数第一的位置。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/2u9oVNMtBMc&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;恭喜QQ糖再次战胜abl，后者继续巩固其实验室倒数第一的位置。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="http://songbinbin.me/categories/Life/"/>
+    
+    
+      <category term="QQ" scheme="http://songbinbin.me/tags/QQ/"/>
+    
+      <category term="badminton" scheme="http://songbinbin.me/tags/badminton/"/>
+    
+      <category term="video" scheme="http://songbinbin.me/tags/video/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://songbinbin.me/2016/02/27/Hello-World/"/>
+    <id>http://songbinbin.me/2016/02/27/Hello-World/</id>
+    <published>2016-02-27T01:57:15.000Z</published>
+    <updated>2016-11-07T09:44:02.045Z</updated>
+    
+    <content type="html">&lt;p&gt;买下这个域名也有很久了，间间断断地搭起了这个博客，第一篇也就随便聊聊吧。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;照例，先给大家说声“Hello World!”。&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;平时的生活还是略微单调，忙里偷闲打打炉石、看看NBA、和女朋友一起看看电影、打打羽毛球。没事会憧憬一下工作后财务自由的日子，也会为未来的不确定性偶尔担忧，但希望付出或多或少都会有收获。&lt;/p&gt;
+&lt;p&gt;学习上，在南京大学这样一个理工科学校学着电子专业，研究生继续学电子却做着深度学习方面的研究，我也是够折腾的。好在实验室宽松的科研环境，能够让我专心做自己喜欢的方向；得益于迅捷的网络资源，也不会偏离现在的主流方向，很庆幸赶上了一个好时代。&lt;/p&gt;
+&lt;p&gt;最后，本命年该干嘛干嘛，人生不留遗憾咯。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;买下这个域名也有很久了，间间断断地搭起了这个博客，第一篇也就随便聊聊吧。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="http://songbinbin.me/categories/Life/"/>
+    
+    
+      <category term="diary" scheme="http://songbinbin.me/tags/diary/"/>
+    
+  </entry>
+  
+</feed>

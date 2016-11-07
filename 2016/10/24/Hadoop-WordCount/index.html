@@ -1,0 +1,661 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hadoop," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="今天给大家带来Hadoop下的第一个Hello World程序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop实验--WordCount">
+<meta property="og:url" content="http://songbinbin.me/2016/10/24/Hadoop-WordCount/index.html">
+<meta property="og:site_name" content="Andy's blog">
+<meta property="og:description" content="今天给大家带来Hadoop下的第一个Hello World程序。">
+<meta property="og:image" content="http://songbinbin.me/img/hadoop/file_list.png">
+<meta property="og:image" content="http://songbinbin.me/img/hadoop/web_1.png">
+<meta property="og:image" content="http://songbinbin.me/img/hadoop/web_2.png">
+<meta property="og:updated_time" content="2016-11-07T09:42:54.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop实验--WordCount">
+<meta name="twitter:description" content="今天给大家带来Hadoop下的第一个Hello World程序。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://songbinbin.me/2016/10/24/Hadoop-WordCount/"/>
+
+
+  <title> Hadoop实验--WordCount | Andy's blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Andy's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hadoop实验--WordCount
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-24T21:59:37+08:00" content="2016-10-24">
+              2016-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index">
+                    <span itemprop="name">Software</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天给大家带来Hadoop下的第一个Hello World程序。<br><a id="more"></a></p>
+<h1 id="1-选用文本"><a href="#1-选用文本" class="headerlink" title="1. 选用文本"></a>1. 选用文本</h1><p>实验所选用的数据选用的是《冰与火之歌》(A Song of Ice and Fire)的英文txt文件，从下面这个网站中下载：<a href="http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html" target="_blank" rel="external">http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html</a><br>一共有五个txt文件，分别是:</p>
+<ul>
+<li>001ssb.txt (A Game of Thrones，权力的游戏，1.6M)</li>
+<li>002ssb.txt (A Clash of Kings，列王的纷争，1.8M)</li>
+<li>003ssb.txt (A Storm of Swords，冰与的风暴，2.4M)</li>
+<li>004ssb.txt (A Feast for Crows，群鸦的盛宴，1.7M)</li>
+<li>005ssb.txt (A Dance with Dragons，魔龙的狂舞，2.4M)</li>
+</ul>
+<h1 id="2-创建HDFS文件目录"><a href="#2-创建HDFS文件目录" class="headerlink" title="2. 创建HDFS文件目录"></a>2. 创建HDFS文件目录</h1><p>格式化文件系统并启动，因为伪分布式读取的是HDFS上的数据，要执行MapReduce任务，我们需要创建HDFS文件系统。使用HDFS文件操作命令：<code>hdfs dfs -mkdir －p /user/tyrion</code>，其中，<code>tyrion</code>是你当前Ubuntu的用户名。该命令的行为与UNIX下<code>mkdir -p</code>相似，这一路径上的父目录如果不存在，则创建该父目录。如果按如上命令，那么现在就默认在HDFS文件系统中的<code>/user/tyrion</code>目录下。接下来创建<code>input</code>文件夹用于存放输入数据，使用put命令将之前的txt文件拷入input文件夹中。类似，ls命令可以查看文件列表。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -mkdir input</span><br><span class="line">hdfs dfs -put /path_to_txt_file/*.txt input</span><br><span class="line">hdfs dfs -ls input</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器中输入<code>localhost:50070</code>可以查看集群基本信息，包括文件信息。<br><img src="/img/hadoop/file_list.png" alt=""></p>
+<h1 id="3-使用IntelliJ编写Hadoop程序"><a href="#3-使用IntelliJ编写Hadoop程序" class="headerlink" title="3. 使用IntelliJ编写Hadoop程序"></a>3. 使用IntelliJ编写Hadoop程序</h1><ol>
+<li>新建一个Project，一路默认。</li>
+<li>添加依赖，依次打开<code>File - Project Structure - Modules - (右侧)+ - Library Type - Java</code>。选择hadoop目录下<code>share/hadoop</code>中的文件夹，本次实验WordCount只用到common和mapreduce文件夹，所以只添加这两个就行了。</li>
+<li>在src下新建一个WordCount类，代码可参考官网Documentation中的Tutorial，在此不做赘述。</li>
+<li>导出jar包。依次选择<code>File - Project Structure - Artifacts - + - JAR - From modules with dependencies...</code>，选择要Main Class，确定。接下来选择菜单<code>Build - Build Artifacts - Build</code>即可，生成的jar文件位于工程项目目录的<code>out/artifacts</code>下。</li>
+</ol>
+<h1 id="4-运行Hadoop程序"><a href="#4-运行Hadoop程序" class="headerlink" title="4. 运行Hadoop程序"></a>4. 运行Hadoop程序</h1><p>可以在hadoop下创建一个exercise文件夹，将刚才生成的jar包拷到其中，按如下命令运行:<br><code>hadoop jar ./exercise/wc.jar input output</code><br>使用命令<code>hdfs dfs -cat output/*</code>可以查看运行结果。<br>通过命令<code>hdfs dfs -get output ./test_out</code>可以将结果取回本地。</p>
+<blockquote>
+<p>运行Hadoop程序时，为了防止覆盖结果，程序指定的输出目录（如output）不能存在，否则会提示错误。</p>
+</blockquote>
+<p>也可以使用Intellij结合Maven本地运行和调试MapReduce程序，该方法最大的特点是不需要安装任何模式的Hadoop，只要在Maven配置文件中指定Hadoop依赖包名字和版本号，Maven就能自动搞定这些依赖。不过刚开始我还是偏向用IntelliJ以及命令行来，以后再来详细研究。</p>
+<h1 id="5-在Web界面查看作业运行状态"><a href="#5-在Web界面查看作业运行状态" class="headerlink" title="5. 在Web界面查看作业运行状态"></a>5. 在Web界面查看作业运行状态</h1><p>要在Web端查看作业的执行情况，需要启动YARN，让YARN来负责资源管理与任务调度。新版Hadoop使用了新的MapReduce框架(YARN，Yet Another Resource Negotiator)。YARN是从MapReduce中分离出来，负责资源管理与任务调度。YARN运行于MapReduce之上，提供了高可用性、高扩展性。</p>
+<ol>
+<li>首先修改配置文件mapred-site.xml，原始只有.template文件，这边需要先进行重命名：<br><code>mv ./etc/hadoop/mapred-site.xml.template ./etc/hadoop/mapred-site.xml</code><blockquote>
+<p>不启动YARN时需改回.template后缀，否则在该配置文件存在，而未开启YARN的情况下会一直尝试连接。</p>
+</blockquote>
+</li>
+<li><p>修改mapred-site.xml以及yarn-site.xm文件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="title">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="title">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动Hadoop <code>./sbin/start-dfs.sh</code><br>启动YARN <code>./sbin/start-yarn.sh</code><br>开启历史服务器，以便在Web中查看任务运行情况<code>./sbin/mr-jobhistory-daemon.sh start historyserver</code><br>开启后通过jps查看，可以看到多了NodeManager和ResourceManager两个后台进程。</p>
+</li>
+<li>浏览器打开<code>localhost:8088</code>可以查看任务运行情况，跑一下WordCount程序。程序执行过程中可以实时查看运行进度，跑完后点击History可以查看作业详细信息。<br><img src="/img/hadoop/web_1.png" alt=""><br><img src="/img/hadoop/web_2.png" alt=""></li>
+<li>关闭脚本：<br><code>./sbin/mr-jobhistory-daemon.sh stop historyserver</code><br><code>./sbin/stop-yarn.sh</code><br><code>./sbin/stop-dfs.sh</code><blockquote>
+<p>如果只启动YARN，那么只可以在Web查看任务运行状态，而不能查看历史信息。</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag">#Hadoop</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/21/Hadoop-install/" rel="next" title="在Ubuntu下布置Hadoop单机伪分布式">
+                <i class="fa fa-chevron-left"></i> 在Ubuntu下布置Hadoop单机伪分布式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/02/wuliQQ/" rel="prev" title="wuliQQ">
+                wuliQQ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wuliQQ.jpg"
+               alt="Andy Song" />
+          <p class="site-author-name" itemprop="name">Andy Song</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/UniqueAndys" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2532176501/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-选用文本"><span class="nav-number">1.</span> <span class="nav-text">1. 选用文本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建HDFS文件目录"><span class="nav-number">2.</span> <span class="nav-text">2. 创建HDFS文件目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用IntelliJ编写Hadoop程序"><span class="nav-number">3.</span> <span class="nav-text">3. 使用IntelliJ编写Hadoop程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-运行Hadoop程序"><span class="nav-number">4.</span> <span class="nav-text">4. 运行Hadoop程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-在Web界面查看作业运行状态"><span class="nav-number">5.</span> <span class="nav-text">5. 在Web界面查看作业运行状态</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Song</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
