@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songbinbin.me/"/>
-  <updated>2016-11-07T09:43:53.045Z</updated>
+  <updated>2016-11-08T02:52:18.951Z</updated>
   <id>http://songbinbin.me/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hadoop实验--带词频的文档倒排索引</title>
+    <link href="http://songbinbin.me/2016/11/08/Hadoop-InvertedIndex/"/>
+    <id>http://songbinbin.me/2016/11/08/Hadoop-InvertedIndex/</id>
+    <published>2016-11-08T01:37:27.000Z</published>
+    <updated>2016-11-08T02:52:18.951Z</updated>
+    
+    <content type="html">&lt;p&gt;Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-简单的文档倒排索引&quot;&gt;&lt;a href=&quot;#1-简单的文档倒排索引&quot; class=&quot;headerlink&quot; title=&quot;1. 简单的文档倒排索引&quot;&gt;&lt;/a&gt;1. 简单的文档倒排索引&lt;/h2&gt;&lt;p&gt;倒排索引最简单的形式，只统计词(term)所出现的文档。&lt;br&gt;Map和Reduce实现伪代码：&lt;/p&gt;
+&lt;p&gt;$ 1: class\ Mapper $&lt;br&gt;$ 2:&amp;emsp; procedure\ Map(docid\ dn,\ doc\ d) $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; for\ all\ term\ t \in doc\ d\ do $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp;&amp;emsp; Emit(term\ t,\ doc\ d) $&lt;/p&gt;
+&lt;p&gt;$ 1: class \  Reducer $&lt;br&gt;$ 2:&amp;emsp; procedure\ Reduce(term\ t,\ Iter_d \langle d_1,d_2,…,d_n \rangle ) $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; H\leftarrow new\ AssociativeArray $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp; P\leftarrow new\ List $&lt;br&gt;$ 5:&amp;emsp;&amp;emsp; for\ all\ d \in Iter_d\ do $&lt;br&gt;$ 6:&amp;emsp;&amp;emsp;&amp;emsp; if\ d\ not\ in\ H $&lt;br&gt;$ 7:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; H\{d\}\leftarrow 1 $&lt;br&gt;$ 8:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; P.append(d) $&lt;br&gt;$ 9:&amp;emsp;&amp;emsp; Emit(term \ t, \ List\ P) $&lt;/p&gt;
+&lt;h2 id=&quot;2-带词频的文档倒排索引&quot;&gt;&lt;a href=&quot;#2-带词频的文档倒排索引&quot; class=&quot;headerlink&quot; title=&quot;2. 带词频的文档倒排索引&quot;&gt;&lt;/a&gt;2. 带词频的文档倒排索引&lt;/h2&gt;&lt;p&gt;除了统计词(term)所出现的文档外，我们还想统计其在每个文档中出现的次数。我们把文档以及次数称作一个posting，这样每个词(term)的倒排索引即由很多个posting即一个posting list组成。&lt;br&gt;伪代码如下：&lt;/p&gt;
+&lt;p&gt;$ 1: class\ Mapper $&lt;br&gt;$ 2:&amp;emsp; procedure\ Map(docid\ dn,\ doc\ d) $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; F\leftarrow new\ AssociativeArray $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp; for\ all\ term\ t\in doc\ d\ do $&lt;br&gt;$ 5:&amp;emsp;&amp;emsp;&amp;emsp; F\{t\}\leftarrow F\{t\}\ +\ 1 $&lt;br&gt;$ 6:&amp;emsp;&amp;emsp; for\ all\ term\ t\in F\ do $&lt;br&gt;$ 7:&amp;emsp;&amp;emsp;&amp;emsp; Emit(term\ t,\ posting\langle doc\ d,\ F\{t\}\rangle ) $&lt;/p&gt;
+&lt;p&gt;$ 1: class \  Reducer $&lt;br&gt;$ 2:&amp;emsp; procedure\ Reduce(term\ t,\ postings[\langle d_1,f_1\rangle ,\langle d_2,f_2\rangle ,…])\ do  $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; H\ \leftarrow\ new\ AssociativeArray $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp; P\ \leftarrow\ new\ List $&lt;br&gt;$ 5:&amp;emsp;&amp;emsp; for\ all\ posting \in postings[\langle d_1,f_1\rangle ,\langle d_2,f_2\rangle ,…]\ do $&lt;br&gt;$ 6:&amp;emsp;&amp;emsp;&amp;emsp; H\{d_n\} \leftarrow H\{d_n\}\ +\ f_n $&lt;br&gt;$ 7:&amp;emsp;&amp;emsp; for\ all\ d\in H\ do $&lt;br&gt;$ 8:&amp;emsp;&amp;emsp;&amp;emsp; P.append(\langle d,\ H\{d\} \rangle ) $&lt;br&gt;$ 9:&amp;emsp;&amp;emsp; Emit(term \ t, \ List\ P) $&lt;/p&gt;
+&lt;h2 id=&quot;3-改进的带词频的文档倒排索引&quot;&gt;&lt;a href=&quot;#3-改进的带词频的文档倒排索引&quot; class=&quot;headerlink&quot; title=&quot;3. 改进的带词频的文档倒排索引&quot;&gt;&lt;/a&gt;3. 改进的带词频的文档倒排索引&lt;/h2&gt;&lt;p&gt;上面的倒排索引算法存在一定的缺陷:Mapper的输出即Reducer的输入的key值是某一个词(term),某些词在所有文件中可能会出现很多次，这样可能会导致reduce节点的内存溢出。&lt;br&gt;一个解决办法是将Mapper输出的key值修改为词加文件名(term,doc)，value值为出现次数。这样带来的新的问题是同样的词可能会被Partitioner分配到不同的reduce节点，对此，我们可以定制自己的Partitioner来解决，让其按照term进行分区。&lt;br&gt;伪代码如下：&lt;/p&gt;
+&lt;p&gt;$ 1: class\ Mapper $&lt;br&gt;$ 2:&amp;emsp; procedure\ Map(docid\ dn,\ doc\ d) $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; for\ all\ term\ t \in doc\ d\ do $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp;&amp;emsp; Emit(\langle t,doc \rangle ,\ 1) $&lt;/p&gt;
+&lt;p&gt;$ 1: class \  Combiner $&lt;br&gt;$ 2:&amp;emsp; procedure\ Combine(pair(t,d),\ counts[f_1,f_2,…])\ do  $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; s\ \leftarrow\ 0 $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp; for\ all\ count\ f\ in\ counts\ [f_1,f_2,…]\ do $&lt;br&gt;$ 5:&amp;emsp;&amp;emsp;&amp;emsp; s\ \leftarrow\ s\ +\ f $&lt;br&gt;$ 6:&amp;emsp;&amp;emsp; Emit(pair(t,d), s) $&lt;/p&gt;
+&lt;p&gt;$ 1: class\ Partitioner $&lt;br&gt;$ 2: &amp;emsp; procedure\ Partition(key\ \langle t,doc \rangle ,\ value\ f) $&lt;br&gt;$ 3: &amp;emsp;&amp;emsp; getPartition(key\ t,\ value) $&lt;/p&gt;
+&lt;p&gt;$ 1: class \  Reducer $&lt;br&gt;$ 2:&amp;emsp; procedure\ Reduce(pairs[\langle t,d_1\rangle ,\langle t,d_2\rangle ,…  ],\ counts[f_1,f_2,…])\ do  $&lt;br&gt;$ 3:&amp;emsp;&amp;emsp; P\ \leftarrow\ new\ List $&lt;br&gt;$ 4:&amp;emsp;&amp;emsp; for\ all\ doc\ d\ in\ pairs[\langle t,d_1\rangle ,\langle t,d_2\rangle ,…  ]\ do $&lt;br&gt;$ 5:&amp;emsp;&amp;emsp;&amp;emsp; s\ \leftarrow\ 0 $&lt;br&gt;$ 6:&amp;emsp;&amp;emsp;&amp;emsp; for\ all\ count\ f\ in\ counts\ [f_1,f_2,…]\ do $&lt;br&gt;$ 7:&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; s\ \leftarrow\ s\ +\ f $&lt;br&gt;$ 8:&amp;emsp;&amp;emsp;&amp;emsp; P.append(\langle d,s \rangle ) $&lt;br&gt;$ 9:&amp;emsp;&amp;emsp; P.insert(0,\ mean(P.s)) $&lt;br&gt;$ 10:&amp;ensp;&amp;emsp; Emit(term \ t, \ List\ P) $&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Software" scheme="http://songbinbin.me/categories/Software/"/>
+    
+    
+      <category term="Hadoop" scheme="http://songbinbin.me/tags/Hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>wuliQQ</title>
@@ -46,7 +80,7 @@
     <link href="http://songbinbin.me/2016/10/24/Hadoop-WordCount/"/>
     <id>http://songbinbin.me/2016/10/24/Hadoop-WordCount/</id>
     <published>2016-10-24T13:59:37.000Z</published>
-    <updated>2016-11-07T09:42:54.037Z</updated>
+    <updated>2016-11-08T01:41:01.999Z</updated>
     
     <content type="html">&lt;p&gt;今天给大家带来Hadoop下的第一个Hello World程序。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;1-选用文本&quot;&gt;&lt;a href=&quot;#1-选用文本&quot; class=&quot;headerlink&quot; title=&quot;1. 选用文本&quot;&gt;&lt;/a&gt;1. 选用文本&lt;/h1&gt;&lt;p&gt;实验所选用的数据选用的是《冰与火之歌》(A Song of Ice and Fire)的英文txt文件，从下面这个网站中下载：&lt;a href=&quot;http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://persischempaka.blogspot.com/2012/04/game-of-thronestxt.html&lt;/a&gt;&lt;br&gt;一共有五个txt文件，分别是:&lt;/p&gt;

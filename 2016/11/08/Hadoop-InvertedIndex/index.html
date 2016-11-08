@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="QQ,video," />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。">
+<meta name="description" content="Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wuliQQ">
-<meta property="og:url" content="http://songbinbin.me/2016/11/02/wuliQQ/index.html">
+<meta property="og:title" content="Hadoop实验--带词频的文档倒排索引">
+<meta property="og:url" content="http://songbinbin.me/2016/11/08/Hadoop-InvertedIndex/index.html">
 <meta property="og:site_name" content="Andy's blog">
-<meta property="og:description" content="想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。">
-<meta property="og:updated_time" content="2016-11-07T09:43:53.045Z">
+<meta property="og:description" content="Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。">
+<meta property="og:updated_time" content="2016-11-08T02:52:18.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wuliQQ">
-<meta name="twitter:description" content="想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。">
+<meta name="twitter:title" content="Hadoop实验--带词频的文档倒排索引">
+<meta name="twitter:description" content="Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。">
 
 
 
@@ -114,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://songbinbin.me/2016/11/02/wuliQQ/"/>
+  <link rel="canonical" href="http://songbinbin.me/2016/11/08/Hadoop-InvertedIndex/"/>
 
 
-  <title> wuliQQ | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Hadoop实验--带词频的文档倒排索引 | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +257,7 @@
             
             
               
-                wuliQQ
+                Hadoop实验--带词频的文档倒排索引
               
             
           </h1>
@@ -269,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T09:34:05+08:00" content="2016-11-02">
-              2016-11-02
+            <time itemprop="dateCreated" datetime="2016-11-08T09:37:27+08:00" content="2016-11-08">
+              2016-11-08
             </time>
           </span>
 
@@ -283,8 +283,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
+                  <a href="/categories/Software/" itemprop="url" rel="index">
+                    <span itemprop="name">Software</span>
                   </a>
                 </span>
 
@@ -316,8 +316,18 @@
       
 
       
-        <p>想做这个视频很久了，wuliQQ，不愿天长地久，但愿曾经拥有。<br><a id="more"></a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hLIGaPoyIyk" frameborder="0" allowfullscreen></iframe>
+        <p>Inverted Index（倒排索引）是目前几乎所有支持全文检索的搜索引擎都要依赖的一个数据结构。基于索引结构，给出一个词(term)，能取得含有这个term的文档列表(the list of documents)。<br><a id="more"></a></p>
+<h2 id="1-简单的文档倒排索引"><a href="#1-简单的文档倒排索引" class="headerlink" title="1. 简单的文档倒排索引"></a>1. 简单的文档倒排索引</h2><p>倒排索引最简单的形式，只统计词(term)所出现的文档。<br>Map和Reduce实现伪代码：</p>
+<p>$ 1: class\ Mapper $<br>$ 2:&emsp; procedure\ Map(docid\ dn,\ doc\ d) $<br>$ 3:&emsp;&emsp; for\ all\ term\ t \in doc\ d\ do $<br>$ 4:&emsp;&emsp;&emsp; Emit(term\ t,\ doc\ d) $</p>
+<p>$ 1: class \  Reducer $<br>$ 2:&emsp; procedure\ Reduce(term\ t,\ Iter_d \langle d_1,d_2,…,d_n \rangle ) $<br>$ 3:&emsp;&emsp; H\leftarrow new\ AssociativeArray $<br>$ 4:&emsp;&emsp; P\leftarrow new\ List $<br>$ 5:&emsp;&emsp; for\ all\ d \in Iter_d\ do $<br>$ 6:&emsp;&emsp;&emsp; if\ d\ not\ in\ H $<br>$ 7:&emsp;&emsp;&emsp;&emsp; H\{d\}\leftarrow 1 $<br>$ 8:&emsp;&emsp;&emsp;&emsp; P.append(d) $<br>$ 9:&emsp;&emsp; Emit(term \ t, \ List\ P) $</p>
+<h2 id="2-带词频的文档倒排索引"><a href="#2-带词频的文档倒排索引" class="headerlink" title="2. 带词频的文档倒排索引"></a>2. 带词频的文档倒排索引</h2><p>除了统计词(term)所出现的文档外，我们还想统计其在每个文档中出现的次数。我们把文档以及次数称作一个posting，这样每个词(term)的倒排索引即由很多个posting即一个posting list组成。<br>伪代码如下：</p>
+<p>$ 1: class\ Mapper $<br>$ 2:&emsp; procedure\ Map(docid\ dn,\ doc\ d) $<br>$ 3:&emsp;&emsp; F\leftarrow new\ AssociativeArray $<br>$ 4:&emsp;&emsp; for\ all\ term\ t\in doc\ d\ do $<br>$ 5:&emsp;&emsp;&emsp; F\{t\}\leftarrow F\{t\}\ +\ 1 $<br>$ 6:&emsp;&emsp; for\ all\ term\ t\in F\ do $<br>$ 7:&emsp;&emsp;&emsp; Emit(term\ t,\ posting\langle doc\ d,\ F\{t\}\rangle ) $</p>
+<p>$ 1: class \  Reducer $<br>$ 2:&emsp; procedure\ Reduce(term\ t,\ postings[\langle d_1,f_1\rangle ,\langle d_2,f_2\rangle ,…])\ do  $<br>$ 3:&emsp;&emsp; H\ \leftarrow\ new\ AssociativeArray $<br>$ 4:&emsp;&emsp; P\ \leftarrow\ new\ List $<br>$ 5:&emsp;&emsp; for\ all\ posting \in postings[\langle d_1,f_1\rangle ,\langle d_2,f_2\rangle ,…]\ do $<br>$ 6:&emsp;&emsp;&emsp; H\{d_n\} \leftarrow H\{d_n\}\ +\ f_n $<br>$ 7:&emsp;&emsp; for\ all\ d\in H\ do $<br>$ 8:&emsp;&emsp;&emsp; P.append(\langle d,\ H\{d\} \rangle ) $<br>$ 9:&emsp;&emsp; Emit(term \ t, \ List\ P) $</p>
+<h2 id="3-改进的带词频的文档倒排索引"><a href="#3-改进的带词频的文档倒排索引" class="headerlink" title="3. 改进的带词频的文档倒排索引"></a>3. 改进的带词频的文档倒排索引</h2><p>上面的倒排索引算法存在一定的缺陷:Mapper的输出即Reducer的输入的key值是某一个词(term),某些词在所有文件中可能会出现很多次，这样可能会导致reduce节点的内存溢出。<br>一个解决办法是将Mapper输出的key值修改为词加文件名(term,doc)，value值为出现次数。这样带来的新的问题是同样的词可能会被Partitioner分配到不同的reduce节点，对此，我们可以定制自己的Partitioner来解决，让其按照term进行分区。<br>伪代码如下：</p>
+<p>$ 1: class\ Mapper $<br>$ 2:&emsp; procedure\ Map(docid\ dn,\ doc\ d) $<br>$ 3:&emsp;&emsp; for\ all\ term\ t \in doc\ d\ do $<br>$ 4:&emsp;&emsp;&emsp; Emit(\langle t,doc \rangle ,\ 1) $</p>
+<p>$ 1: class \  Combiner $<br>$ 2:&emsp; procedure\ Combine(pair(t,d),\ counts[f_1,f_2,…])\ do  $<br>$ 3:&emsp;&emsp; s\ \leftarrow\ 0 $<br>$ 4:&emsp;&emsp; for\ all\ count\ f\ in\ counts\ [f_1,f_2,…]\ do $<br>$ 5:&emsp;&emsp;&emsp; s\ \leftarrow\ s\ +\ f $<br>$ 6:&emsp;&emsp; Emit(pair(t,d), s) $</p>
+<p>$ 1: class\ Partitioner $<br>$ 2: &emsp; procedure\ Partition(key\ \langle t,doc \rangle ,\ value\ f) $<br>$ 3: &emsp;&emsp; getPartition(key\ t,\ value) $</p>
+<p>$ 1: class \  Reducer $<br>$ 2:&emsp; procedure\ Reduce(pairs[\langle t,d_1\rangle ,\langle t,d_2\rangle ,…  ],\ counts[f_1,f_2,…])\ do  $<br>$ 3:&emsp;&emsp; P\ \leftarrow\ new\ List $<br>$ 4:&emsp;&emsp; for\ all\ doc\ d\ in\ pairs[\langle t,d_1\rangle ,\langle t,d_2\rangle ,…  ]\ do $<br>$ 5:&emsp;&emsp;&emsp; s\ \leftarrow\ 0 $<br>$ 6:&emsp;&emsp;&emsp; for\ all\ count\ f\ in\ counts\ [f_1,f_2,…]\ do $<br>$ 7:&emsp;&emsp;&emsp;&emsp; s\ \leftarrow\ s\ +\ f $<br>$ 8:&emsp;&emsp;&emsp; P.append(\langle d,s \rangle ) $<br>$ 9:&emsp;&emsp; P.insert(0,\ mean(P.s)) $<br>$ 10:&ensp;&emsp; Emit(term \ t, \ List\ P) $</p>
 
       
     </div>
@@ -340,9 +350,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/QQ/" rel="tag">#QQ</a>
-          
-            <a href="/tags/video/" rel="tag">#video</a>
+            <a href="/tags/Hadoop/" rel="tag">#Hadoop</a>
           
         </div>
       
@@ -351,17 +359,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/24/Hadoop-WordCount/" rel="next" title="Hadoop实验--WordCount">
-                <i class="fa fa-chevron-left"></i> Hadoop实验--WordCount
+              <a href="/2016/11/02/wuliQQ/" rel="next" title="wuliQQ">
+                <i class="fa fa-chevron-left"></i> wuliQQ
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/08/Hadoop-InvertedIndex/" rel="prev" title="Hadoop实验--带词频的文档倒排索引">
-                Hadoop实验--带词频的文档倒排索引 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,7 +499,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简单的文档倒排索引"><span class="nav-number">1.</span> <span class="nav-text">1. 简单的文档倒排索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-带词频的文档倒排索引"><span class="nav-number">2.</span> <span class="nav-text">2. 带词频的文档倒排索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-改进的带词频的文档倒排索引"><span class="nav-number">3.</span> <span class="nav-text">3. 改进的带词频的文档倒排索引</span></a></li></ol></div>
             
           </div>
         </section>
