@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songbinbin.me/"/>
-  <updated>2016-11-08T02:52:18.951Z</updated>
+  <updated>2016-11-24T14:10:16.862Z</updated>
   <id>http://songbinbin.me/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我家QQ</title>
+    <link href="http://songbinbin.me/2016/11/24/myQQ/"/>
+    <id>http://songbinbin.me/2016/11/24/myQQ/</id>
+    <published>2016-11-24T14:03:10.000Z</published>
+    <updated>2016-11-24T14:10:16.862Z</updated>
+    
+    <content type="html">&lt;p&gt;日常等QQ，不小心拍到我Q正好换了一身新衣裳，美美哒～&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/EgGWJhkzZoI&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;日常等QQ，不小心拍到我Q正好换了一身新衣裳，美美哒～&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="http://songbinbin.me/categories/Life/"/>
+    
+    
+      <category term="QQ" scheme="http://songbinbin.me/tags/QQ/"/>
+    
+      <category term="video" scheme="http://songbinbin.me/tags/video/"/>
+    
+  </entry>
   
   <entry>
     <title>Hadoop实验--带词频的文档倒排索引</title>
