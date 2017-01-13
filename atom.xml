@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songbinbin.me/"/>
-  <updated>2017-01-12T13:45:28.931Z</updated>
+  <updated>2017-01-13T03:39:26.259Z</updated>
   <id>http://songbinbin.me/</id>
   
   <author>
@@ -16,11 +16,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>东詹与西詹</title>
+    <link href="http://songbinbin.me/2017/01/13/east-and-west-james/"/>
+    <id>http://songbinbin.me/2017/01/13/east-and-west-james/</id>
+    <published>2017-01-13T03:12:41.000Z</published>
+    <updated>2017-01-13T03:39:26.259Z</updated>
+    
+    <content type="html">&lt;p&gt;今年开始黑转路转粉的两位球员，勒布朗詹姆斯与詹姆斯哈登。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;之前一直不太喜欢詹姆斯，或许是他总被用来和蜗壳做比较的缘故吧。觉得他太功利啦，打球不具有美感啦之类云云。但自从他去年夺冠以后，逐渐开始喜欢这位，也许可以竞争NBA史上最伟大球员的总统山人物。总冠军固然有加成，但我真正看中的，是他的领袖气质，尤其是带动队友不断变好的能力。这点是很多成功人物所缺乏的，在保持自己绝对实力的同时，也能让周围人也变得更出色。&lt;/p&gt;
+&lt;p&gt;另一位，之前总喜欢逛夜店、场上眼神防守的登哥。去年休赛期，在签下一份顶薪合同后，一点负面新闻没有，全是刻苦训练的报导。当然另外也有签下顶薪之后更加努力的球员，与新的战术体系也有关系，但哈登这个赛季的转变，场上的表现、赛后的话语，真是让我对他刮目相看。到底是什么让一个人产生如此蜕变？不得而知。我觉得还是他内在的原动力，源于他从小到大所经历的一切，终于在这个时间点，让他厚积薄发。&lt;/p&gt;
+&lt;p&gt;联盟即世界，赛场即人生，两位詹姆斯，继续加油。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今年开始黑转路转粉的两位球员，勒布朗詹姆斯与詹姆斯哈登。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="NBA" scheme="http://songbinbin.me/categories/NBA/"/>
+    
+    
+      <category term="diary" scheme="http://songbinbin.me/tags/diary/"/>
+    
+      <category term="harden" scheme="http://songbinbin.me/tags/harden/"/>
+    
+      <category term="james" scheme="http://songbinbin.me/tags/james/"/>
+    
+  </entry>
+  
+  <entry>
     <title>随记（一）</title>
     <link href="http://songbinbin.me/2017/01/12/diary-preparing-for-work/"/>
     <id>http://songbinbin.me/2017/01/12/diary-preparing-for-work/</id>
     <published>2017-01-12T13:21:32.000Z</published>
-    <updated>2017-01-12T13:45:28.931Z</updated>
+    <updated>2017-01-13T03:13:17.943Z</updated>
     
     <content type="html">&lt;p&gt;2017年1月12日，研二上学期即将结束，实习一步步准备，最后一次组会，论文小修回复。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;最近都在准备找实习，算是过得挺充实吧。每天就是看算法，看机器学习，刷LeetCode。游泳卡用了47次，挽救了两个月，结果还行。&lt;/p&gt;
