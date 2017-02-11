@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songbinbin.me/"/>
-  <updated>2017-01-13T03:39:26.259Z</updated>
+  <updated>2017-02-11T03:09:38.131Z</updated>
   <id>http://songbinbin.me/</id>
   
   <author>
@@ -14,6 +14,184 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入浅出学统计</title>
+    <link href="http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/"/>
+    <id>http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/</id>
+    <published>2017-02-11T03:03:48.000Z</published>
+    <updated>2017-02-11T03:09:38.131Z</updated>
+    
+    <content type="html">&lt;p&gt;寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;引言：统计无处不在&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;人人都用统计学的&lt;strong&gt;真正原因&lt;/strong&gt;：统计帮助我们在&lt;strong&gt;信息有限的情况下&lt;/strong&gt;，做出&lt;strong&gt;充满信心的决策&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;统计学的&lt;strong&gt;基本问题&lt;/strong&gt;：我们如何通过样本，充满自信地描述整体？&lt;/li&gt;
+&lt;li&gt;我们可以通过统计&lt;strong&gt;进行充满信心的猜测&lt;/strong&gt;，但&lt;strong&gt;永远无法&lt;/strong&gt;通过统计&lt;strong&gt;得出确定无疑的结果&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;第一部分：搜集统计数据&quot;&gt;&lt;a href=&quot;#第一部分：搜集统计数据&quot; class=&quot;headerlink&quot; title=&quot;第一部分：搜集统计数据&quot;&gt;&lt;/a&gt;第一部分：搜集统计数据&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;数字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;统计并不只关系到数字，统计关系到我们的&lt;strong&gt;信心&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;在处理任何数字时，都带着&lt;strong&gt;适当的怀疑&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;随机原始数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;用样本描述总体可谓&lt;strong&gt;聪明之举&lt;/strong&gt;，不过在&lt;strong&gt;尝试迈出实质性的一步&lt;/strong&gt;之前，我们要记住几个事实。首先，我们&lt;strong&gt;不可能&lt;/strong&gt;通过样本&lt;strong&gt;完全确定&lt;/strong&gt;一个总体。统计指的是做出&lt;strong&gt;最佳猜测&lt;/strong&gt;，而&lt;strong&gt;绝非确凿无疑&lt;/strong&gt;的判断。其次，我们在采集样本时犯下的&lt;strong&gt;任何错误&lt;/strong&gt;，都能&lt;strong&gt;彻底歪曲&lt;/strong&gt;我们对较大总体的结论。&lt;/li&gt;
+&lt;li&gt;采集样本&lt;strong&gt;最大的挑战&lt;/strong&gt;可能在于，准确指出要在样本中&lt;strong&gt;包含哪些内容&lt;/strong&gt;。目标是避免&lt;strong&gt;样本中出现偏倚&lt;/strong&gt;，偏倚可能会导致我们&lt;strong&gt;曲解总体&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;理想情况是，我们采集的样本能&lt;strong&gt;正确反映总体&lt;/strong&gt;，为了避免偏倚，我们&lt;strong&gt;总是随机&lt;/strong&gt;采集样本。&lt;/li&gt;
+&lt;li&gt;随机样本效果显著的原因是，它表明我们抽取任何一个样本的&lt;strong&gt;可能性&lt;/strong&gt;都和抽取其他样本的&lt;strong&gt;可能性是一样大&lt;/strong&gt;；如果这些样本有差别，这&lt;strong&gt;纯属偶然&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;因为&lt;strong&gt;随机抽样&lt;/strong&gt;是一切统计调查的&lt;strong&gt;关键&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;排序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;两种数据:类别型数据和&lt;strong&gt;数值型&lt;/strong&gt;数据，我们不能对类别数据进行&lt;strong&gt;数学运算&lt;/strong&gt;，但可以对数值型数据进行数学运算。&lt;/li&gt;
+&lt;li&gt;箱线图，把位于样本&lt;strong&gt;中间的50%数&lt;/strong&gt;值挤在&lt;strong&gt;一个大箱子&lt;/strong&gt;里，然后分别指出最小值、中间值和最大值。&lt;/li&gt;
+&lt;li&gt;通常，当我们希望对整个数据集进行&lt;strong&gt;整体描述&lt;/strong&gt;时，我们画&lt;strong&gt;直方图&lt;/strong&gt;，包含&lt;strong&gt;精确的细节&lt;/strong&gt;；另一方面，如果我们希望概要了解数据的&lt;strong&gt;情况&lt;/strong&gt;或者希望&lt;strong&gt;对不同样本或群组进行&lt;/strong&gt;比较，这时&lt;strong&gt;箱线图&lt;/strong&gt;特别管用。&lt;/li&gt;
+&lt;li&gt;箱线图仿佛&lt;strong&gt;缩小版&lt;/strong&gt;的直方图，可以让我们迅速了解&lt;strong&gt;数据的汇聚情况&lt;/strong&gt;，以及数据是否朝着一端或另一端&lt;strong&gt;延展&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;尽管我们会受到&lt;strong&gt;更具奥妙的数学工具诱惑&lt;/strong&gt;，但简单的图形却能让我们集中关注数据&lt;strong&gt;表达的确切意义&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;侦探工作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;当我们&lt;strong&gt;动手调查&lt;/strong&gt;任何一批数据时，总是观察&lt;strong&gt;四个主要特性&lt;/strong&gt;：样本大小，形状，位置，分散性。&lt;/li&gt;
+&lt;li&gt;一般来说，样本&lt;strong&gt;越大&lt;/strong&gt;，结果&lt;strong&gt;越好&lt;/strong&gt;！样本大小会&lt;strong&gt;直接关系&lt;/strong&gt;到我们对一个总体可以具有的&lt;strong&gt;置信水平&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;无论数据汇聚成什么形状（平的，正态的，偏斜的），总是&lt;strong&gt;有其原因的&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;位置是对一批数据在&lt;strong&gt;一个数轴上的落点&lt;/strong&gt;的度量，我们常用一个数字&lt;strong&gt;平均数&lt;/strong&gt;来描述位置，但如果数据是偏斜的，那么度量位置时&lt;strong&gt;中位数&lt;/strong&gt;更能体现数据情况。&lt;/li&gt;
+&lt;li&gt;分散性是对&lt;strong&gt;一批数据的宽度&lt;/strong&gt;的度量，同时也是对&lt;strong&gt;变异性&lt;/strong&gt;的度量。&lt;/li&gt;
+&lt;li&gt;测量分散性的一个简单明了的办法是&lt;strong&gt;算出全距&lt;/strong&gt;，即最大值与最小值的差值，然后&lt;strong&gt;分成四块&lt;/strong&gt;，中间的两块被称为&lt;strong&gt;四分位距（IQR）&lt;/strong&gt; （箱线图）。&lt;/li&gt;
+&lt;li&gt;分散性的最常见度量方法是&lt;strong&gt;标准差（SD）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;怪异的错误&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;有两个峰的直方图形状称为双峰。&lt;/li&gt;
+&lt;li&gt;潜在变量会给&lt;strong&gt;各种统计分析带来麻烦&lt;/strong&gt;，统计师的部分工作就是&lt;strong&gt;发现潜在变量&lt;/strong&gt;。（只吃卷心菜会让人长寿，只吃卷心菜的人往往锻炼得更加勤快）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;从样本到总体&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在通用数学术语中，“分布”一词描述了一个随机变量得所有可能数值的位置情况。&lt;/li&gt;
+&lt;li&gt;统计的目的是利用样本对总体进行猜测，一向如此。我们为二者使用不同的术语和技术符号。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;我们将统计特性称为“统计值”&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;我们将总体特性称为“参数”&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;书写公式时，“x拔”特指&lt;strong&gt;样本平均数&lt;/strong&gt; $\mathbf{\overline{x}}$&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;小写希腊字母“缪”特指&lt;strong&gt;总体平均数&lt;/strong&gt;：$\mathbf{\mu}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;s特指&lt;strong&gt;样本标准差&lt;/strong&gt;：$\mathbf{s}$&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;小写希腊字母“西格玛”特指&lt;strong&gt;总体标准差&lt;/strong&gt;：$\sigma$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;统计值&lt;/strong&gt;是我们实际测量的数值，因此是确凿无疑的数值。&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;参数&lt;/strong&gt;是我们想知道的数值，但只能通过猜测获得。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;换句话说，我们&lt;strong&gt;采集统计值&lt;/strong&gt;的唯一原因，是我们&lt;strong&gt;对参数有兴趣&lt;/strong&gt;。尽管我们&lt;strong&gt;永远&lt;/strong&gt;做不到&lt;strong&gt;直接观察参数&lt;/strong&gt;，却可以&lt;strong&gt;利用统计值&lt;/strong&gt;去&lt;strong&gt;发掘参数&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;我们即将学习利用从&lt;strong&gt;随机样本&lt;/strong&gt;算出的统计值，挖掘作为&lt;strong&gt;样本来源总体的平均数&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;第二部分：探寻参数&quot;&gt;&lt;a href=&quot;#第二部分：探寻参数&quot; class=&quot;headerlink&quot; title=&quot;第二部分：探寻参数&quot;&gt;&lt;/a&gt;第二部分：探寻参数&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;中心极限定理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;让我们设想：我们希望知道&lt;strong&gt;某个总体的平均值&lt;/strong&gt;，然后外出并&lt;strong&gt;从该总体中采集了一连串各自独立的随机样本&lt;/strong&gt;。结果证明，如果我们&lt;strong&gt;算出每个随机样本的平均数&lt;/strong&gt;，然后把这些平均数&lt;strong&gt;按顺序堆起来&lt;/strong&gt;，随着堆放的样本平均数&lt;strong&gt;越来越多&lt;/strong&gt;，堆成的外形&lt;strong&gt;越趋向于正态&lt;/strong&gt;。从技术上看，像这样一个巨大的堆积形状是一类&lt;strong&gt;抽样分布&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;这个发现对于出自&lt;strong&gt;任何总体&lt;/strong&gt;的随机样本平均数都成立。至于&lt;strong&gt;总体本身&lt;/strong&gt;是什么形状，倒&lt;strong&gt;并不要紧&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;中心极限定理（CLT）是许多统计推论的依据，它指出：当样本大小 $n$ 很大时，$\overline{x}$ 的抽样分布接近&lt;strong&gt;正态&lt;/strong&gt;。更具体地说，对于从单一总体（平均数为 $\mu$，标准差为 $\sigma$ ）中抽取的大小为 $n$ 的多个大型&lt;strong&gt;随机样本&lt;/strong&gt;，$\overline{x}$ 的分布近似于平均数为 $\mu$，标准差为 $\sigma / \sqrt{n}$ 的正态分布。&lt;/li&gt;
+&lt;li&gt;中心极限定理&lt;strong&gt;只有&lt;/strong&gt;在每个样本均为&lt;strong&gt;随机&lt;/strong&gt;抽取&lt;strong&gt;且&lt;/strong&gt;每个样本都&lt;strong&gt;足够大&lt;/strong&gt;（达到30以上被认为是大样本，通常就够了）时才成立。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;概率&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;抽样分布的两个奥妙：它能告诉我们&lt;strong&gt;总体均值&lt;/strong&gt;，我们可以利用它&lt;strong&gt;算出总体的概率&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;正态分布&lt;br&gt;位于距离中心值1个标准差的范围内，68%&lt;br&gt;位于距离中心值2个标准差的范围内，95%&lt;br&gt;位于距离中心值3个标准差的范围内，99.7%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;推断&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可惜，在现实生活中，我们&lt;strong&gt;绝不会弄一个实际的抽样分布进行观察&lt;/strong&gt;，我们所拥有的不过是&lt;strong&gt;一罐&lt;/strong&gt;而已。&lt;/li&gt;
+&lt;li&gt;由于&lt;strong&gt;样本平均数&lt;/strong&gt;倾向于&lt;strong&gt;簇拥在总体平均数周围&lt;/strong&gt;，我们可以画一堆数，用来&lt;strong&gt;猜测总体平均数的位置&lt;/strong&gt;，统计学家们把这样的过程称为&lt;strong&gt;推断&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;估计抽样分布：在实践中，当使用中心极限定理时，我们无法获知参数 $\mu$ 和 $\sigma$ 的真实值，因此我们用统计值 $\overline{x}$ 和 $s$ 来近似 $\mu$ 和 $\sigma$。这种&lt;strong&gt;近似&lt;/strong&gt;之所以可行，是因为我们的统计值是随机的。结果，我们期望 $\overline{x}$ 与 $\mu$ 有差别，$s$ 和 $\sigma$ 有差别，但这&lt;strong&gt;只是因为偶然变异&lt;/strong&gt;。代入近似值后，我们将结果称为&lt;strong&gt;估计抽样分布&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;信心&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你取得一个大小合适的&lt;strong&gt;随机样本&lt;/strong&gt;，并用这个样本&lt;strong&gt;构建一个估计抽样分布&lt;/strong&gt;，然后&lt;strong&gt;从距离中心2个标准差的地方减去尾部&lt;/strong&gt;，那么&lt;strong&gt;95%的情况下&lt;/strong&gt;你都会得到一个包含&lt;strong&gt;真正的总体平均数的范围&lt;/strong&gt;！换句话说，我们有95%的信心总体平均数在这个范围内的某个地方。&lt;/li&gt;
+&lt;li&gt;置信区间：从技术上说&lt;strong&gt;置信区间&lt;/strong&gt;是与特定&lt;strong&gt;置信水平&lt;/strong&gt;有关的一类区间估计。我们可以计算任何参数的置信区间，但特定技术细节有所差别。&lt;/li&gt;
+&lt;li&gt;理想情况下，我们希望任何置信水平的相应置信区间都&lt;strong&gt;尽量最窄&lt;/strong&gt;，因为置信区间越窄越精确。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;恨之深&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;增大 $n$ （通过采集更多观测值）是获得更窄区间的可靠办法，这正是样本越大越好的原因！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假设检验&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，我们用&lt;strong&gt;一个样本构建一个估计抽样分布&lt;/strong&gt;，然后把这个分布&lt;strong&gt;推到另一个我们有兴趣研究的位置&lt;/strong&gt;。接下来，我们&lt;strong&gt;回顾&lt;/strong&gt;通过我们的唯一样本得知的平均数，并提问：如果总体平均数&lt;strong&gt;确实在这儿&lt;/strong&gt;，那么我们随机抽取一个和我们手头的样本一样的样本的&lt;strong&gt;可能性有多大&lt;/strong&gt;？&lt;/li&gt;
+&lt;li&gt;P值：在原假设为真的前提下，我们将会观测到的数据的极值不超过我们实际观测到的数据的极值（双尾检验，单尾检验）的概率。&lt;/li&gt;
+&lt;li&gt;假设检验总是以算出P值并据此做出&lt;strong&gt;正式结论&lt;/strong&gt;为终点。这个&lt;strong&gt;正式结论&lt;/strong&gt;指出：我们是否认为我们的统计值与&lt;strong&gt;原假设&lt;/strong&gt;所预测饿的参数具有足够大的偏差，从而可以有理有据地&lt;strong&gt;拒绝&lt;/strong&gt;原假设，而选择另一观点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;破立之争&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在实践中，我们将一种假设（样本）与&lt;strong&gt;原假设&lt;/strong&gt;进行比较。不过有一些&lt;strong&gt;偏心的规矩&lt;/strong&gt;，原假设总想赢，除非有足够强的证据证明原假设不对！&lt;/li&gt;
+&lt;li&gt;假设检验的要点是，断不可&lt;strong&gt;妄下结论&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;走向高级：飞猪、外星口水虫和焰火&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;差值推断&lt;/li&gt;
+&lt;li&gt;小样本推断：T分布&lt;/li&gt;
+&lt;li&gt;标准差推断&lt;/li&gt;
+&lt;li&gt;本质上，一切统计问题都相似。这些问题看起来就像这样：如果我们只能得到&lt;strong&gt;样本&lt;/strong&gt;，如何对&lt;strong&gt;总体&lt;/strong&gt;做出判断？我们解决的办法则像这样：我们利用手头的数据估计出某种&lt;strong&gt;抽样分布&lt;/strong&gt;，然后&lt;strong&gt;截取它的概率&lt;/strong&gt;，但有时候先把这个分布&lt;strong&gt;推移到一个新位置&lt;/strong&gt;更有用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;结语：像统计师一样思考&quot;&gt;&lt;a href=&quot;#结语：像统计师一样思考&quot; class=&quot;headerlink&quot; title=&quot;结语：像统计师一样思考&quot;&gt;&lt;/a&gt;结语：像统计师一样思考&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在&lt;strong&gt;第一部分&lt;/strong&gt;，我们介绍了样本数据的&lt;strong&gt;堆积方式&lt;/strong&gt;（形状，位置和分布），并进行了研究。接着，在&lt;strong&gt;第二部分&lt;/strong&gt;，我们学习了&lt;strong&gt;统计&lt;/strong&gt;推断，也就是如何&lt;strong&gt;利用样本找出整个总体的特性&lt;/strong&gt;。我们特别学习了如何构建&lt;strong&gt;估计抽样分布&lt;/strong&gt;，如何&lt;strong&gt;剪裁&lt;/strong&gt;，以便计算&lt;strong&gt;置信区间&lt;/strong&gt;，或推移到附近，以便进行&lt;strong&gt;假设检验&lt;/strong&gt;。最后，我们学习了如何在问题变得&lt;strong&gt;更为复杂&lt;/strong&gt;时，修正这些基本步骤。&lt;/li&gt;
+&lt;li&gt;我们通过这本书学习了&lt;strong&gt;统计学家的思维方式&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Math" scheme="http://songbinbin.me/categories/Math/"/>
+    
+    
+      <category term="Reading Notes" scheme="http://songbinbin.me/tags/Reading-Notes/"/>
+    
+      <category term="Statistics" scheme="http://songbinbin.me/tags/Statistics/"/>
+    
+  </entry>
   
   <entry>
     <title>东詹与西詹</title>

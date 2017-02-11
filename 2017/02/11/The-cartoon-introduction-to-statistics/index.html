@@ -1,0 +1,800 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Reading Notes,Statistics," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出学统计">
+<meta property="og:url" content="http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/index.html">
+<meta property="og:site_name" content="Andy's blog">
+<meta property="og:description" content="寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。">
+<meta property="og:updated_time" content="2017-02-11T03:09:38.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入浅出学统计">
+<meta name="twitter:description" content="寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/"/>
+
+
+  <title> 深入浅出学统计 | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Andy's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入浅出学统计
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-11T11:03:48+08:00" content="2017-02-11">
+              2017-02-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。<br><a id="more"></a></p>
+<blockquote>
+<p>引言：统计无处不在</p>
+</blockquote>
+<ul>
+<li>人人都用统计学的<strong>真正原因</strong>：统计帮助我们在<strong>信息有限的情况下</strong>，做出<strong>充满信心的决策</strong>。</li>
+<li>统计学的<strong>基本问题</strong>：我们如何通过样本，充满自信地描述整体？</li>
+<li>我们可以通过统计<strong>进行充满信心的猜测</strong>，但<strong>永远无法</strong>通过统计<strong>得出确定无疑的结果</strong>。</li>
+</ul>
+<h3 id="第一部分：搜集统计数据"><a href="#第一部分：搜集统计数据" class="headerlink" title="第一部分：搜集统计数据"></a>第一部分：搜集统计数据</h3><blockquote>
+<p>数字</p>
+</blockquote>
+<ul>
+<li>统计并不只关系到数字，统计关系到我们的<strong>信心</strong>。</li>
+<li>在处理任何数字时，都带着<strong>适当的怀疑</strong>。</li>
+</ul>
+<blockquote>
+<p>随机原始数据</p>
+</blockquote>
+<ul>
+<li>用样本描述总体可谓<strong>聪明之举</strong>，不过在<strong>尝试迈出实质性的一步</strong>之前，我们要记住几个事实。首先，我们<strong>不可能</strong>通过样本<strong>完全确定</strong>一个总体。统计指的是做出<strong>最佳猜测</strong>，而<strong>绝非确凿无疑</strong>的判断。其次，我们在采集样本时犯下的<strong>任何错误</strong>，都能<strong>彻底歪曲</strong>我们对较大总体的结论。</li>
+<li>采集样本<strong>最大的挑战</strong>可能在于，准确指出要在样本中<strong>包含哪些内容</strong>。目标是避免<strong>样本中出现偏倚</strong>，偏倚可能会导致我们<strong>曲解总体</strong>。</li>
+<li>理想情况是，我们采集的样本能<strong>正确反映总体</strong>，为了避免偏倚，我们<strong>总是随机</strong>采集样本。</li>
+<li>随机样本效果显著的原因是，它表明我们抽取任何一个样本的<strong>可能性</strong>都和抽取其他样本的<strong>可能性是一样大</strong>；如果这些样本有差别，这<strong>纯属偶然</strong>。</li>
+<li>因为<strong>随机抽样</strong>是一切统计调查的<strong>关键</strong>。</li>
+</ul>
+<blockquote>
+<p>排序</p>
+</blockquote>
+<ul>
+<li>两种数据:类别型数据和<strong>数值型</strong>数据，我们不能对类别数据进行<strong>数学运算</strong>，但可以对数值型数据进行数学运算。</li>
+<li>箱线图，把位于样本<strong>中间的50%数</strong>值挤在<strong>一个大箱子</strong>里，然后分别指出最小值、中间值和最大值。</li>
+<li>通常，当我们希望对整个数据集进行<strong>整体描述</strong>时，我们画<strong>直方图</strong>，包含<strong>精确的细节</strong>；另一方面，如果我们希望概要了解数据的<strong>情况</strong>或者希望<strong>对不同样本或群组进行</strong>比较，这时<strong>箱线图</strong>特别管用。</li>
+<li>箱线图仿佛<strong>缩小版</strong>的直方图，可以让我们迅速了解<strong>数据的汇聚情况</strong>，以及数据是否朝着一端或另一端<strong>延展</strong>。</li>
+<li>尽管我们会受到<strong>更具奥妙的数学工具诱惑</strong>，但简单的图形却能让我们集中关注数据<strong>表达的确切意义</strong>。</li>
+</ul>
+<blockquote>
+<p>侦探工作</p>
+</blockquote>
+<ul>
+<li>当我们<strong>动手调查</strong>任何一批数据时，总是观察<strong>四个主要特性</strong>：样本大小，形状，位置，分散性。</li>
+<li>一般来说，样本<strong>越大</strong>，结果<strong>越好</strong>！样本大小会<strong>直接关系</strong>到我们对一个总体可以具有的<strong>置信水平</strong>。</li>
+<li>无论数据汇聚成什么形状（平的，正态的，偏斜的），总是<strong>有其原因的</strong>。</li>
+<li>位置是对一批数据在<strong>一个数轴上的落点</strong>的度量，我们常用一个数字<strong>平均数</strong>来描述位置，但如果数据是偏斜的，那么度量位置时<strong>中位数</strong>更能体现数据情况。</li>
+<li>分散性是对<strong>一批数据的宽度</strong>的度量，同时也是对<strong>变异性</strong>的度量。</li>
+<li>测量分散性的一个简单明了的办法是<strong>算出全距</strong>，即最大值与最小值的差值，然后<strong>分成四块</strong>，中间的两块被称为<strong>四分位距（IQR）</strong> （箱线图）。</li>
+<li>分散性的最常见度量方法是<strong>标准差（SD）</strong></li>
+</ul>
+<blockquote>
+<p>怪异的错误</p>
+</blockquote>
+<ul>
+<li>有两个峰的直方图形状称为双峰。</li>
+<li>潜在变量会给<strong>各种统计分析带来麻烦</strong>，统计师的部分工作就是<strong>发现潜在变量</strong>。（只吃卷心菜会让人长寿，只吃卷心菜的人往往锻炼得更加勤快）</li>
+</ul>
+<blockquote>
+<p>从样本到总体</p>
+</blockquote>
+<ul>
+<li>在通用数学术语中，“分布”一词描述了一个随机变量得所有可能数值的位置情况。</li>
+<li>统计的目的是利用样本对总体进行猜测，一向如此。我们为二者使用不同的术语和技术符号。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">我们将统计特性称为“统计值”</th>
+<th style="text-align:center">我们将总体特性称为“参数”</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">书写公式时，“x拔”特指<strong>样本平均数</strong> $\mathbf{\overline{x}}$</td>
+<td style="text-align:center">小写希腊字母“缪”特指<strong>总体平均数</strong>：$\mathbf{\mu}$</td>
+</tr>
+<tr>
+<td style="text-align:center">s特指<strong>样本标准差</strong>：$\mathbf{s}$</td>
+<td style="text-align:center">小写希腊字母“西格玛”特指<strong>总体标准差</strong>：$\sigma$</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>统计值</strong>是我们实际测量的数值，因此是确凿无疑的数值。</td>
+<td style="text-align:center"><strong>参数</strong>是我们想知道的数值，但只能通过猜测获得。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>换句话说，我们<strong>采集统计值</strong>的唯一原因，是我们<strong>对参数有兴趣</strong>。尽管我们<strong>永远</strong>做不到<strong>直接观察参数</strong>，却可以<strong>利用统计值</strong>去<strong>发掘参数</strong>。</li>
+<li>我们即将学习利用从<strong>随机样本</strong>算出的统计值，挖掘作为<strong>样本来源总体的平均数</strong>。</li>
+</ul>
+<h3 id="第二部分：探寻参数"><a href="#第二部分：探寻参数" class="headerlink" title="第二部分：探寻参数"></a>第二部分：探寻参数</h3><blockquote>
+<p>中心极限定理</p>
+</blockquote>
+<ul>
+<li>让我们设想：我们希望知道<strong>某个总体的平均值</strong>，然后外出并<strong>从该总体中采集了一连串各自独立的随机样本</strong>。结果证明，如果我们<strong>算出每个随机样本的平均数</strong>，然后把这些平均数<strong>按顺序堆起来</strong>，随着堆放的样本平均数<strong>越来越多</strong>，堆成的外形<strong>越趋向于正态</strong>。从技术上看，像这样一个巨大的堆积形状是一类<strong>抽样分布</strong>。</li>
+<li>这个发现对于出自<strong>任何总体</strong>的随机样本平均数都成立。至于<strong>总体本身</strong>是什么形状，倒<strong>并不要紧</strong>。</li>
+<li>中心极限定理（CLT）是许多统计推论的依据，它指出：当样本大小 $n$ 很大时，$\overline{x}$ 的抽样分布接近<strong>正态</strong>。更具体地说，对于从单一总体（平均数为 $\mu$，标准差为 $\sigma$ ）中抽取的大小为 $n$ 的多个大型<strong>随机样本</strong>，$\overline{x}$ 的分布近似于平均数为 $\mu$，标准差为 $\sigma / \sqrt{n}$ 的正态分布。</li>
+<li>中心极限定理<strong>只有</strong>在每个样本均为<strong>随机</strong>抽取<strong>且</strong>每个样本都<strong>足够大</strong>（达到30以上被认为是大样本，通常就够了）时才成立。</li>
+</ul>
+<blockquote>
+<p>概率</p>
+</blockquote>
+<ul>
+<li>抽样分布的两个奥妙：它能告诉我们<strong>总体均值</strong>，我们可以利用它<strong>算出总体的概率</strong>。</li>
+<li>正态分布<br>位于距离中心值1个标准差的范围内，68%<br>位于距离中心值2个标准差的范围内，95%<br>位于距离中心值3个标准差的范围内，99.7%</li>
+</ul>
+<blockquote>
+<p>推断</p>
+</blockquote>
+<ul>
+<li>可惜，在现实生活中，我们<strong>绝不会弄一个实际的抽样分布进行观察</strong>，我们所拥有的不过是<strong>一罐</strong>而已。</li>
+<li>由于<strong>样本平均数</strong>倾向于<strong>簇拥在总体平均数周围</strong>，我们可以画一堆数，用来<strong>猜测总体平均数的位置</strong>，统计学家们把这样的过程称为<strong>推断</strong>。</li>
+<li>估计抽样分布：在实践中，当使用中心极限定理时，我们无法获知参数 $\mu$ 和 $\sigma$ 的真实值，因此我们用统计值 $\overline{x}$ 和 $s$ 来近似 $\mu$ 和 $\sigma$。这种<strong>近似</strong>之所以可行，是因为我们的统计值是随机的。结果，我们期望 $\overline{x}$ 与 $\mu$ 有差别，$s$ 和 $\sigma$ 有差别，但这<strong>只是因为偶然变异</strong>。代入近似值后，我们将结果称为<strong>估计抽样分布</strong>。</li>
+</ul>
+<blockquote>
+<p>信心</p>
+</blockquote>
+<ul>
+<li>如果你取得一个大小合适的<strong>随机样本</strong>，并用这个样本<strong>构建一个估计抽样分布</strong>，然后<strong>从距离中心2个标准差的地方减去尾部</strong>，那么<strong>95%的情况下</strong>你都会得到一个包含<strong>真正的总体平均数的范围</strong>！换句话说，我们有95%的信心总体平均数在这个范围内的某个地方。</li>
+<li>置信区间：从技术上说<strong>置信区间</strong>是与特定<strong>置信水平</strong>有关的一类区间估计。我们可以计算任何参数的置信区间，但特定技术细节有所差别。</li>
+<li>理想情况下，我们希望任何置信水平的相应置信区间都<strong>尽量最窄</strong>，因为置信区间越窄越精确。</li>
+</ul>
+<blockquote>
+<p>恨之深</p>
+</blockquote>
+<ul>
+<li>增大 $n$ （通过采集更多观测值）是获得更窄区间的可靠办法，这正是样本越大越好的原因！</li>
+</ul>
+<blockquote>
+<p>假设检验</p>
+</blockquote>
+<ul>
+<li>首先，我们用<strong>一个样本构建一个估计抽样分布</strong>，然后把这个分布<strong>推到另一个我们有兴趣研究的位置</strong>。接下来，我们<strong>回顾</strong>通过我们的唯一样本得知的平均数，并提问：如果总体平均数<strong>确实在这儿</strong>，那么我们随机抽取一个和我们手头的样本一样的样本的<strong>可能性有多大</strong>？</li>
+<li>P值：在原假设为真的前提下，我们将会观测到的数据的极值不超过我们实际观测到的数据的极值（双尾检验，单尾检验）的概率。</li>
+<li>假设检验总是以算出P值并据此做出<strong>正式结论</strong>为终点。这个<strong>正式结论</strong>指出：我们是否认为我们的统计值与<strong>原假设</strong>所预测饿的参数具有足够大的偏差，从而可以有理有据地<strong>拒绝</strong>原假设，而选择另一观点。</li>
+</ul>
+<blockquote>
+<p>破立之争</p>
+</blockquote>
+<ul>
+<li>在实践中，我们将一种假设（样本）与<strong>原假设</strong>进行比较。不过有一些<strong>偏心的规矩</strong>，原假设总想赢，除非有足够强的证据证明原假设不对！</li>
+<li>假设检验的要点是，断不可<strong>妄下结论</strong>。</li>
+</ul>
+<blockquote>
+<p>走向高级：飞猪、外星口水虫和焰火</p>
+</blockquote>
+<ul>
+<li>差值推断</li>
+<li>小样本推断：T分布</li>
+<li>标准差推断</li>
+<li>本质上，一切统计问题都相似。这些问题看起来就像这样：如果我们只能得到<strong>样本</strong>，如何对<strong>总体</strong>做出判断？我们解决的办法则像这样：我们利用手头的数据估计出某种<strong>抽样分布</strong>，然后<strong>截取它的概率</strong>，但有时候先把这个分布<strong>推移到一个新位置</strong>更有用。</li>
+</ul>
+<h3 id="结语：像统计师一样思考"><a href="#结语：像统计师一样思考" class="headerlink" title="结语：像统计师一样思考"></a>结语：像统计师一样思考</h3><ul>
+<li>在<strong>第一部分</strong>，我们介绍了样本数据的<strong>堆积方式</strong>（形状，位置和分布），并进行了研究。接着，在<strong>第二部分</strong>，我们学习了<strong>统计</strong>推断，也就是如何<strong>利用样本找出整个总体的特性</strong>。我们特别学习了如何构建<strong>估计抽样分布</strong>，如何<strong>剪裁</strong>，以便计算<strong>置信区间</strong>，或推移到附近，以便进行<strong>假设检验</strong>。最后，我们学习了如何在问题变得<strong>更为复杂</strong>时，修正这些基本步骤。</li>
+<li>我们通过这本书学习了<strong>统计学家的思维方式</strong>。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reading-Notes/" rel="tag">#Reading Notes</a>
+          
+            <a href="/tags/Statistics/" rel="tag">#Statistics</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/13/east-and-west-james/" rel="next" title="东詹与西詹">
+                <i class="fa fa-chevron-left"></i> 东詹与西詹
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/wuliQQ.jpg"
+               alt="Andy Song" />
+          <p class="site-author-name" itemprop="name">Andy Song</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/UniqueAndys" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2532176501/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一部分：搜集统计数据"><span class="nav-number">1.</span> <span class="nav-text">第一部分：搜集统计数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二部分：探寻参数"><span class="nav-number">2.</span> <span class="nav-text">第二部分：探寻参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语：像统计师一样思考"><span class="nav-number">3.</span> <span class="nav-text">结语：像统计师一样思考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Song</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
