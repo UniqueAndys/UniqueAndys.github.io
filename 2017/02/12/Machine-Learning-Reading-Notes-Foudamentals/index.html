@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine Learning,Reading Notes," />
+  <meta name="keywords" content="Reading Notes," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://songbinbin.me/2017/02/12/Machine-Learning-Reading-Notes-Foudamentals/index.html">
 <meta property="og:site_name" content="Andy's blog">
 <meta property="og:description" content="整理出周志华老师《机器学习》里的一些基本概念以加深自己对机器学习的理解。">
-<meta property="og:updated_time" content="2017-02-12T03:27:26.786Z">
+<meta property="og:updated_time" content="2017-02-12T03:33:12.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习阅读笔记（一）">
 <meta name="twitter:description" content="整理出周志华老师《机器学习》里的一些基本概念以加深自己对机器学习的理解。">
@@ -283,8 +283,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Computer-Science/" itemprop="url" rel="index">
-                    <span itemprop="name">Computer Science</span>
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
                   </a>
                 </span>
 
@@ -317,6 +317,9 @@
 
       
         <p>整理出周志华老师《机器学习》里的一些基本概念以加深自己对机器学习的理解。<br><a id="more"></a></p>
+<blockquote>
+<p>绪论</p>
+</blockquote>
 <ol>
 <li>机器学习致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。  </li>
 <li>“模型”泛指从数据中学得的结果，在计算机上从数据中产生“模型”的算法为学习算法。  </li>
@@ -326,6 +329,11 @@
 <li>机器学习算法在学习过程中对某种类型假设的偏好，称为“归纳偏好”。任何一个有效的机器学习算法必有其归纳偏好，归纳偏好可看作学习算法自身在一个可能很庞大的假设空间中对假设进行选择的启发式或“价值观”。</li>
 <li>“奥卡姆剃刀”是一种常用的、自然科学研究中最基本的原则，即“若有多个假设与观察一致，则选最简单的那个”。</li>
 <li>大数据时代的三大关键技术：机器学习，云计算，众包。机器学习提供数据分析能力，云计算提供数据处理能力，众包提供数据标注能力。</li>
+</ol>
+<blockquote>
+<p>模型评估与选择</p>
+</blockquote>
+<ol>
 <li>过拟合：把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质。欠拟合：对训练样本的一般性质尚未学好。过拟合是无法彻底避免的，我们所能做的只是“缓解”，或者说减小其风险。</li>
 <li>单次使用留出法得到的估计结果往往不够稳定可靠，在使用留出法时，一般要采用若干次随机划分、重复进行实验评估后取平均值作为留出法的评估结果。</li>
 <li>为减小因样本划分不同而引入的差别，$k$折交叉验证通常要随机使用不同的划分重复$p$次，最终的评估结果是这$p$次$k$折交叉验证结果的均值。</li>
@@ -334,6 +342,11 @@
 <li>P-R曲线，ROC曲线都是先把预测结果排序，然后依次截断；不同的是横纵坐标的度量有所差别。</li>
 <li>为权衡不同类型错误所造成的不同损失，可为错误赋予“非均等代价”。</li>
 <li>泛化误差可分解为偏差、方差与噪声之和。<br>偏差度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力；<br>方差度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响；<br>噪声则表达了在当前任务上任何学习算法所达到的期望泛化误差的下界，即刻画了学习问题本身的难度。<br>偏差-方差分解说明，泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的。</li>
+</ol>
+<blockquote>
+<p>线性模型</p>
+</blockquote>
+<ol>
 <li>对数几率回归（logistic regression）：用线性回归模型的预测结果去逼近真实标记的对数几率。</li>
 <li>LDA的思想非常朴素：给定训练样例集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近、异类样例的投影点尽可能远离。</li>
 <li>纠错输出码ECOC是将编码的思想引入类别拆分，并尽可能在解码过程中具有容错性。</li>
@@ -361,8 +374,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
           
             <a href="/tags/Reading-Notes/" rel="tag">#Reading Notes</a>
           
@@ -464,7 +475,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
