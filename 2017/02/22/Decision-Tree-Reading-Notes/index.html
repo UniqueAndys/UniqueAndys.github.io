@@ -86,13 +86,13 @@
 
 <meta name="description" content="决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="决策树阅读笔记">
+<meta property="og:title" content="机器学习阅读笔记（二）">
 <meta property="og:url" content="http://songbinbin.me/2017/02/22/Decision-Tree-Reading-Notes/index.html">
 <meta property="og:site_name" content="Andy's blog">
 <meta property="og:description" content="决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。">
-<meta property="og:updated_time" content="2017-02-22T11:24:31.590Z">
+<meta property="og:updated_time" content="2017-02-22T11:47:10.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="决策树阅读笔记">
+<meta name="twitter:title" content="机器学习阅读笔记（二）">
 <meta name="twitter:description" content="决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。">
 
 
@@ -117,7 +117,7 @@
   <link rel="canonical" href="http://songbinbin.me/2017/02/22/Decision-Tree-Reading-Notes/"/>
 
 
-  <title> 决策树阅读笔记 | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 机器学习阅读笔记（二） | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +257,7 @@
             
             
               
-                决策树阅读笔记
+                机器学习阅读笔记（二）
               
             
           </h1>
@@ -321,10 +321,10 @@
 <li>分类决策树模型是表示基于<strong>特征</strong>对实例进行分类的树形结构。决策树可以转换成一个<strong>if-then</strong>规则的集合，也可以是看作定义在特征空间划分上的<strong>类的条件概率分布</strong>。</li>
 </ul>
 <ul>
-<li>在信息论与概率统计中，熵（entropy）是表示随机变量不确定性的度量。设 $X$ 是一个取有限个值的离散随机变量，其概率分布为 $$P(X=x_i) = p<em>i, i = 1,2,\dots,n$$ 则随机变量 $X$ 的熵定义为 $$H(X) = - \sum</em>{i=1}^n p_i \log p_i$$ 熵越大，随机变量的不确定性就越大。</li>
+<li>在信息论与概率统计中，熵（entropy）是表示随机变量不确定性的度量。设 $X$ 是一个取有限个值的离散随机变量，其概率分布为 $$ P(X=x_i) = p_i, i = 1,2, \dots,n $$<br>则随机变量 $X$ 的熵定义为 $$H(X) = - \sum_{i=1}^n p_i \log p_i$$ 熵越大，随机变量的不确定性就越大。</li>
 </ul>
 <ul>
-<li>设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y<em>i)=p</em>{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$</li>
+<li>设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y_i)=p_{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$</li>
 </ul>
 <ul>
 <li>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵（empirical entropy）和经验条件熵（empirical conditional entropy）。</li>
@@ -341,7 +341,7 @@
 <li>预剪枝与后剪枝对比<br>预剪枝基于<strong>贪心</strong>本质使得决策树的很多分支都没有“展开”，这不仅降低了过拟合的风险，还显著减少了决策树的训练时间开销和测试时间开销，但带来了<strong>欠拟合</strong>的风险。<br>后剪枝决策树通常比预剪枝决策树保留了更多的分支。一般情况下，后剪枝决策树的欠拟合风险很小，泛化性能往往优于预剪枝决策树，但训练时间开销较大。</li>
 </ul>
 <ul>
-<li>统计学习方法中决策树的损失函数：设树 $T$ 的叶结点个数为 $|T|$，$t$ 是树 $T$ 的叶结点，该叶结点有 $N_t$ 个样本点，$H<em>t(T)$ 为叶结点 $t$ 上的经验熵，$\alpha \ge 0$ 为参数，则决策树学习的损失函数可定义为 $$C</em>\alpha (T) = \sum_{t=1}^{|T|}N_tH_t(T) + \alpha |T|$$</li>
+<li>统计学习方法中决策树的损失函数：设树 $T$ 的叶结点个数为 $|T|$，$t$ 是树 $T$ 的叶结点，该叶结点有 $N_t$ 个样本点，$H_t(T)$ 为叶结点 $t$ 上的经验熵，$\alpha \ge 0$ 为参数，则决策树学习的损失函数可定义为 $$C_\alpha (T) = \sum_{t=1}^{|T|}N_tH_t(T) + \alpha |T|$$</li>
 </ul>
 <ul>
 <li>CART剪枝算法由两步组成：首先从生成算法产生的决策树 $T_0$ 底端开始不断剪枝，直到 $T_0$ 的根结点，形成一个子树序列 $\{ T_0, T_1, \dots, T_n\}$；然后通过交叉验证法在独立的验证数据集上对子树序列进行测试，从中选择最优子树。</li>
