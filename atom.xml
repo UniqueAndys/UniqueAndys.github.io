@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songbinbin.me/"/>
-  <updated>2017-02-22T11:47:10.610Z</updated>
+  <updated>2017-02-28T12:43:43.112Z</updated>
   <id>http://songbinbin.me/</id>
   
   <author>
@@ -16,11 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习阅读笔记（三）</title>
+    <link href="http://songbinbin.me/2017/02/28/Support-Vector-Machine-Reading-Notes/"/>
+    <id>http://songbinbin.me/2017/02/28/Support-Vector-Machine-Reading-Notes/</id>
+    <published>2017-02-28T12:29:31.000Z</published>
+    <updated>2017-02-28T12:43:43.112Z</updated>
+    
+    <content type="html">&lt;p&gt;支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性可分支持向量机(硬间隔最大化)：求解能够正确划分训练数据集并且&lt;strong&gt;几何间隔&lt;/strong&gt;最大的分离超平面。可以表示为凸二次规划问题，其原始最优化问题为：&lt;br&gt;$$ \begin{align}&lt;br&gt;&amp;amp; \min_{w,b}\quad \frac{1}{2} \Vert w\Vert ^2 \\&lt;br&gt;&amp;amp; s.t.\quad y_i (w\cdot x_i + b)-1\ge 0,\quad i=1,2,\dots,N&lt;br&gt;\end{align} $$&lt;br&gt;二次规划的对偶问题为：&lt;br&gt;$$ \begin{align}&lt;br&gt;\min_\alpha\quad &amp;amp; \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N \alpha_i\alpha_j y_i y_j(x_i\cdot x_j) - \sum_{i=1}^N \alpha_i \\&lt;br&gt;s.t.\quad &amp;amp; \sum_{i=1}^N \alpha_i y_i = 0 \\&lt;br&gt;&amp;amp; \alpha_i \ge 0,\quad i=1,2,\dots, N&lt;br&gt;\end{align} $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;线性不可分意味着某些样本点 $(x_i, y_i)$ 不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点 $(x_i, y_i)$ 引入一个松弛变量 $\xi_i \ge 0$ ，使函数间隔加上松弛变量大于等于1。同时，对每个松弛变量 $\xi_i$ ，支付一个代价 $\xi_i$。线性不可分的线性支持向量机的学习问题变成如下凸二次规划问题（原始问题）：&lt;br&gt;$$ \begin{align}&lt;br&gt;\min_{w,b,\xi}\quad &amp;amp;  \frac{1}{2} \Vert w\Vert ^2 + C\sum_{i=1}^N \xi_i \\&lt;br&gt;s.t.\quad &amp;amp;  y_i (w\cdot x_i + b) + \xi_i \ge 1,\quad i=1,2,\dots,N \\&lt;br&gt;&amp;amp; \xi_i \ge 0,\quad i=1,2,\dots,N&lt;br&gt;\end{align} $$&lt;br&gt;其对偶形式为：&lt;br&gt;$$ \begin{align}&lt;br&gt;\min_\alpha\quad &amp;amp; \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N \alpha_i\alpha_j y_i y_j(x_i\cdot x_j) - \sum_{i=1}^N \alpha_i \\&lt;br&gt;s.t.\quad &amp;amp; \sum_{i=1}^N \alpha_i y_i = 0 \\&lt;br&gt;&amp;amp; 0 \le \alpha_i \le C,\quad i=1,2,\dots, N&lt;br&gt;\end{align} $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;核技巧可以用线性分类方法求解非线性分类问题，分为两步：首先使用一个变换将原空间的数据映射到新空间；然后在新空间里用线性分类学习方法从训练数据中学习分类模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;（&lt;strong&gt;核函数&lt;/strong&gt;）设 $\mathcal{X}$ 是输入空间（欧氏空间 $\mathbf{R}^n$ 的子集或离散集合），又设 $\mathcal{H}$ 为特征空间（希尔伯特空间），如果存在一个从 $\mathcal{X}$ 到 $\mathcal{H}$ 的映射 $$\phi(x):\mathcal{X} \to \mathcal{H}$$ 使得对所有的 $x,z \in \mathcal{X}$，函数 $K(x,z)$ 满足条件 $$K(x,z) = \phi(x) \cdot \phi(z)$$  则称 $K(x,z)$ 为核函数，$\phi(x)$ 为映射函数，式中 $\phi(x) \cdot \phi(z)$ 为 $\phi(x)$ 和 $\phi(z)$ 的内积。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;核技巧的想法是，在学习与预测中只定义核函数 $K(x,z)$，而不显示地定义映射函数 $\phi$。对于给定的核 $K(x,z)$，特征空间 $\mathcal{H}$ 和映射函数 $\phi$ 的取法并不唯一，可以取不同的特征空间，即便在同一特征空间里也可以取不同的映射。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;常用核函数&lt;br&gt;$$ \begin{align}&lt;br&gt;线性核\quad &amp;amp; k(x_i, x_j) = x_i^T x_j \\&lt;br&gt;多项式核\quad &amp;amp; k(x_i, x_j) = (x_i^T x_j)^d \\&lt;br&gt;高斯核（RBF核）\quad &amp;amp; k(x_i^T x_j) = exp(-\frac{\Vert x_i - x_j\Vert^2}{2\sigma^2}) \\&lt;br&gt;拉普拉斯核\quad &amp;amp; k(x_i^T x_j) = exp(-\frac{\Vert x_i - x_j\Vert}{\sigma}) \\&lt;br&gt;Sigmoid核\quad &amp;amp; k(x_i^T x_j) = tanh(\beta x_i^T x_j + \theta) \\&lt;br&gt;字符串核函数\quad &amp;amp; 定义在字符串集合上的核函数&lt;br&gt;\end{align} $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;SMO算法是支持向量机学习的一种快速算法，其特点是不断地将原二次规划问题分解为只有两个变量的二次规划问题，并对子问题进行解析求解，直到所有变量满足KKT条件为止。这样通过启发式的方式得到原二次规划问题的最优解。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://songbinbin.me/categories/Machine-Learning/"/>
+    
+    
+      <category term="Reading Notes" scheme="http://songbinbin.me/tags/Reading-Notes/"/>
+    
+      <category term="Support Vector Machine" scheme="http://songbinbin.me/tags/Support-Vector-Machine/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习阅读笔记（二）</title>
     <link href="http://songbinbin.me/2017/02/22/Decision-Tree-Reading-Notes/"/>
     <id>http://songbinbin.me/2017/02/22/Decision-Tree-Reading-Notes/</id>
     <published>2017-02-22T11:19:36.000Z</published>
-    <updated>2017-02-22T11:47:10.610Z</updated>
+    <updated>2017-02-28T12:44:03.544Z</updated>
     
     <content type="html">&lt;p&gt;决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -30,7 +76,7 @@
 &lt;li&gt;在信息论与概率统计中，熵（entropy）是表示随机变量不确定性的度量。设 $X$ 是一个取有限个值的离散随机变量，其概率分布为 $$ P(X=x_i) = p_i, i = 1,2, \dots,n $$&lt;br&gt;则随机变量 $X$ 的熵定义为 $$H(X) = - \sum_{i=1}^n p_i \log p_i$$ 熵越大，随机变量的不确定性就越大。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
-&lt;li&gt;设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y_i)=p_{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$&lt;/li&gt;
+&lt;li&gt;设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y_i)=p_{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Ya|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵（empirical entropy）和经验条件熵（empirical conditional entropy）。&lt;/li&gt;
@@ -80,7 +126,7 @@
     <link href="http://songbinbin.me/2017/02/12/Machine-Learning-Reading-Notes-Foudamentals/"/>
     <id>http://songbinbin.me/2017/02/12/Machine-Learning-Reading-Notes-Foudamentals/</id>
     <published>2017-02-12T03:21:53.000Z</published>
-    <updated>2017-02-22T11:20:53.866Z</updated>
+    <updated>2017-02-28T12:43:57.892Z</updated>
     
     <content type="html">&lt;p&gt;整理出周志华老师《机器学习》里的一些基本概念以加深自己对机器学习的理解。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -139,7 +185,7 @@
     <link href="http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/"/>
     <id>http://songbinbin.me/2017/02/11/The-cartoon-introduction-to-statistics/</id>
     <published>2017-02-11T03:03:48.000Z</published>
-    <updated>2017-02-12T03:25:19.726Z</updated>
+    <updated>2017-02-28T12:45:11.408Z</updated>
     
     <content type="html">&lt;p&gt;寒假看了一本《深入浅出统计学》，觉得讲得很好，整理出阅读笔记。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;

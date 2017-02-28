@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Reading Notes,Support Vector Machine," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Andy's blog">
-<meta property="og:url" content="http://songbinbin.me/tags/james/index.html">
+<meta name="description" content="支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习阅读笔记（三）">
+<meta property="og:url" content="http://songbinbin.me/2017/02/28/Support-Vector-Machine-Reading-Notes/index.html">
 <meta property="og:site_name" content="Andy's blog">
-<meta property="og:description">
+<meta property="og:description" content="支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。">
+<meta property="og:updated_time" content="2017-02-28T12:43:43.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Andy's blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="机器学习阅读笔记（三）">
+<meta name="twitter:description" content="支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。">
 
 
 
@@ -113,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://songbinbin.me/tags/james/"/>
+  <link rel="canonical" href="http://songbinbin.me/2017/02/28/Support-Vector-Machine-Reading-Notes/"/>
 
 
-  <title> 标签: james | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 机器学习阅读笔记（三） | Andy's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +138,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -235,46 +236,164 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        james
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习阅读笔记（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-28T20:29:31+08:00" content="2017-02-28">
+              2017-02-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <p>支持向量机阅读笔记，主要参考李航博士《统计学习方法》公式化描述、周志华老师《机器学习》形象讲解。<br><a id="more"></a></p>
+<ul>
+<li>线性可分支持向量机(硬间隔最大化)：求解能够正确划分训练数据集并且<strong>几何间隔</strong>最大的分离超平面。可以表示为凸二次规划问题，其原始最优化问题为：<br>$$ \begin{align}<br>&amp; \min_{w,b}\quad \frac{1}{2} \Vert w\Vert ^2 \\<br>&amp; s.t.\quad y_i (w\cdot x_i + b)-1\ge 0,\quad i=1,2,\dots,N<br>\end{align} $$<br>二次规划的对偶问题为：<br>$$ \begin{align}<br>\min_\alpha\quad &amp; \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N \alpha_i\alpha_j y_i y_j(x_i\cdot x_j) - \sum_{i=1}^N \alpha_i \\<br>s.t.\quad &amp; \sum_{i=1}^N \alpha_i y_i = 0 \\<br>&amp; \alpha_i \ge 0,\quad i=1,2,\dots, N<br>\end{align} $$</li>
+</ul>
+<ul>
+<li>线性不可分意味着某些样本点 $(x_i, y_i)$ 不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点 $(x_i, y_i)$ 引入一个松弛变量 $\xi_i \ge 0$ ，使函数间隔加上松弛变量大于等于1。同时，对每个松弛变量 $\xi_i$ ，支付一个代价 $\xi_i$。线性不可分的线性支持向量机的学习问题变成如下凸二次规划问题（原始问题）：<br>$$ \begin{align}<br>\min_{w,b,\xi}\quad &amp;  \frac{1}{2} \Vert w\Vert ^2 + C\sum_{i=1}^N \xi_i \\<br>s.t.\quad &amp;  y_i (w\cdot x_i + b) + \xi_i \ge 1,\quad i=1,2,\dots,N \\<br>&amp; \xi_i \ge 0,\quad i=1,2,\dots,N<br>\end{align} $$<br>其对偶形式为：<br>$$ \begin{align}<br>\min_\alpha\quad &amp; \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N \alpha_i\alpha_j y_i y_j(x_i\cdot x_j) - \sum_{i=1}^N \alpha_i \\<br>s.t.\quad &amp; \sum_{i=1}^N \alpha_i y_i = 0 \\<br>&amp; 0 \le \alpha_i \le C,\quad i=1,2,\dots, N<br>\end{align} $$</li>
+</ul>
+<ul>
+<li>核技巧可以用线性分类方法求解非线性分类问题，分为两步：首先使用一个变换将原空间的数据映射到新空间；然后在新空间里用线性分类学习方法从训练数据中学习分类模型。</li>
+</ul>
+<ul>
+<li>（<strong>核函数</strong>）设 $\mathcal{X}$ 是输入空间（欧氏空间 $\mathbf{R}^n$ 的子集或离散集合），又设 $\mathcal{H}$ 为特征空间（希尔伯特空间），如果存在一个从 $\mathcal{X}$ 到 $\mathcal{H}$ 的映射 $$\phi(x):\mathcal{X} \to \mathcal{H}$$ 使得对所有的 $x,z \in \mathcal{X}$，函数 $K(x,z)$ 满足条件 $$K(x,z) = \phi(x) \cdot \phi(z)$$  则称 $K(x,z)$ 为核函数，$\phi(x)$ 为映射函数，式中 $\phi(x) \cdot \phi(z)$ 为 $\phi(x)$ 和 $\phi(z)$ 的内积。</li>
+</ul>
+<ul>
+<li>核技巧的想法是，在学习与预测中只定义核函数 $K(x,z)$，而不显示地定义映射函数 $\phi$。对于给定的核 $K(x,z)$，特征空间 $\mathcal{H}$ 和映射函数 $\phi$ 的取法并不唯一，可以取不同的特征空间，即便在同一特征空间里也可以取不同的映射。</li>
+</ul>
+<ul>
+<li>常用核函数<br>$$ \begin{align}<br>线性核\quad &amp; k(x_i, x_j) = x_i^T x_j \\<br>多项式核\quad &amp; k(x_i, x_j) = (x_i^T x_j)^d \\<br>高斯核（RBF核）\quad &amp; k(x_i^T x_j) = exp(-\frac{\Vert x_i - x_j\Vert^2}{2\sigma^2}) \\<br>拉普拉斯核\quad &amp; k(x_i^T x_j) = exp(-\frac{\Vert x_i - x_j\Vert}{\sigma}) \\<br>Sigmoid核\quad &amp; k(x_i^T x_j) = tanh(\beta x_i^T x_j + \theta) \\<br>字符串核函数\quad &amp; 定义在字符串集合上的核函数<br>\end{align} $$</li>
+</ul>
+<ul>
+<li>SMO算法是支持向量机学习的一种快速算法，其特点是不断地将原二次规划问题分解为只有两个变量的二次规划问题，并对子问题进行解析求解，直到所有变量满足KKT条件为止。这样通过启发式的方式得到原二次规划问题的最优解。</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/01/13/east-and-west-james/" itemprop="url">
-              
-                <span itemprop="name">东詹与西詹</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-13T11:12:41+08:00"
-              content="2017-01-13" >
-          01-13
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reading-Notes/" rel="tag">#Reading Notes</a>
+          
+            <a href="/tags/Support-Vector-Machine/" rel="tag">#Support Vector Machine</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/22/Decision-Tree-Reading-Notes/" rel="next" title="机器学习阅读笔记（二）">
+                <i class="fa fa-chevron-left"></i> 机器学习阅读笔记（二）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -282,6 +401,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -301,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/img/wuliQQ.jpg"
@@ -372,6 +504,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -468,6 +611,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 

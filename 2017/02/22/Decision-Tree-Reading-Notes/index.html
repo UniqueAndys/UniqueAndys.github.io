@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://songbinbin.me/2017/02/22/Decision-Tree-Reading-Notes/index.html">
 <meta property="og:site_name" content="Andy's blog">
 <meta property="og:description" content="决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。">
-<meta property="og:updated_time" content="2017-02-22T11:47:10.610Z">
+<meta property="og:updated_time" content="2017-02-28T12:44:03.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习阅读笔记（二）">
 <meta name="twitter:description" content="决策树阅读笔记，参考周志华老师的《机器学习》及李航博士的《统计学习方法》。">
@@ -324,7 +324,7 @@
 <li>在信息论与概率统计中，熵（entropy）是表示随机变量不确定性的度量。设 $X$ 是一个取有限个值的离散随机变量，其概率分布为 $$ P(X=x_i) = p_i, i = 1,2, \dots,n $$<br>则随机变量 $X$ 的熵定义为 $$H(X) = - \sum_{i=1}^n p_i \log p_i$$ 熵越大，随机变量的不确定性就越大。</li>
 </ul>
 <ul>
-<li>设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y_i)=p_{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$</li>
+<li>设有随机变量 $(X,Y)$，其联合概率分布为 $$P(X=x_i,Y=y_i)=p_{ij},i=1,2,\dots,n;j=1,2,\dots,m$$ 条件熵 $H(Ya|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定的条件下随机变量 $Y$ 的条件熵（conditional entropy） $H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望 $$H(Y|X)=\sum_{i=1}^n p_i H(Y|X=x_i)$$ 这里，$p_i = P(X=x_i),i=1,2,\dots,n$</li>
 </ul>
 <ul>
 <li>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵（empirical entropy）和经验条件熵（empirical conditional entropy）。</li>
@@ -393,6 +393,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/02/28/Support-Vector-Machine-Reading-Notes/" rel="prev" title="机器学习阅读笔记（三）">
+                机器学习阅读笔记（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -459,7 +463,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -476,7 +480,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
